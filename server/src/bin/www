@@ -16,7 +16,7 @@ const server = http.createServer(app);
 mongoose.connection.once('open', () => {
   server.listen(PORT, () => {
     logger.info(
-      `Server running in "${process.env.NODE_ENV} mode" at: ${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}`
+      `Server running in "${process.env.NODE_ENV} mode" at: ${process.env.PROTOCOL}://${process.env.HOST}:${process.env.PORT}/`
     );
 
     if (process.send !== undefined) {

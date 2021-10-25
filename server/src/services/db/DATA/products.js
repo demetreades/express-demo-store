@@ -1,4 +1,4 @@
-module.exports = [
+exports.products = [
   {
     name: 'Airpods Wireless Bluetooth Headphones',
     slug: 'airpods-wireless-bluetooth-headphones',
@@ -66,5 +66,3 @@ module.exports = [
     InStock: 20,
   },
 ];
-
-module.exports = products;

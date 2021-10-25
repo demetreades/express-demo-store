@@ -1,11 +1,27 @@
-const express = require('express');
+'use strict';
 
-const { userRoutes, orderRoutes, productRoutes } = require('./routes');
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const compression = require('compression');
+
+const { limitOptions, corsOptions } = require('./config');
 const { handleErrors, handleMongoErrors, handleNotFound } = require('./utils');
+const { userRoutes, orderRoutes, productRoutes } = require('./routes');
 const dbConnection = require('./services/db/connection');
+
 dbConnection();
 
 const app = express();
+
+app.use(helmet());
+app.use(rateLimit(limitOptions));
+app.use(cors(corsOptions));
+app.use(compression());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/users', userRoutes);
 app.use('/orders', orderRoutes);
