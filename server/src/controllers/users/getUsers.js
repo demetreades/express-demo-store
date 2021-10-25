@@ -10,6 +10,7 @@ const { User } = require('../../services/models');
  * @route        GET /api/users
  * @access       Private/Admin
  */
+
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
 

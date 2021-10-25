@@ -1,5 +1,7 @@
+'use strict';
+
 const mongoose = require('mongoose');
-const handleSlugs = require('./utils/slugify');
+const handleSlugs = require('./utils/handleSlugs');
 
 const productSchema = mongoose.Schema(
   {
@@ -56,6 +58,6 @@ const productSchema = mongoose.Schema(
   }
 );
 
-// handleSlugs(productSchema);
+handleSlugs(productSchema);
 
 module.exports = mongoose.model('Product', productSchema);

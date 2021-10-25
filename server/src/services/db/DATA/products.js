@@ -1,4 +1,4 @@
-const products = [
+module.exports = [
   {
     name: 'Airpods Wireless Bluetooth Headphones',
     slug: 'airpods-wireless-bluetooth-headphones',

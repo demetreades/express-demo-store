@@ -3,15 +3,15 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
-const { Order } = require('../../services/models')
+const { Order } = require('../../services/models');
 /*
  * @desc    Get single order by id
  * @route   GET /api/orders/:id
  * @access  Private
  **/
 const getOrderById = asyncHandler(async (req, res) => {
-  const { order_id } = req.params;
-  const order = await Order.findById(order_id).populate('user', 'name email');
+  const { id } = req.params;
+  const order = await Order.findById(id).populate('user', 'name email');
 
   if (order) {
     res.status(StatusCodes.OK).json({

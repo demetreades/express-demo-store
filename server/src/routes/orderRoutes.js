@@ -15,7 +15,7 @@ router
   // .get(protect, admin, getOrders)
 
 router
-  .route('/:order_id')
+  .route('/:id')
   .get(getOrderById)
   .delete(deleteOrder)
   .put(updateOrder);

@@ -3,7 +3,7 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
-const { Orders } = require('../../services/models')
+const { Orders } = require('../../services/models');
 
 // updateOrder
 /**
@@ -11,19 +11,16 @@ const { Orders } = require('../../services/models')
  * @route   POST /api/products/:id
  * @access  Private/Admin
  */
- const updateOrder = asyncHandler(async (req, res, next) => {
-  const { order_id } = req.params;
-  const order = await Order.findByIdAndUpdate(order_id, req.body, {
+const updateOrder = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const order = await Order.findByIdAndUpdate(id, req.body, {
     new: true,
     runValidators: true,
   });
 
   if (!order) {
     return next(
-      new BaseError(
-        StatusCodes.NOT_FOUND,
-        `Product with id: ${order_id} not found`
-      )
+      new BaseError(StatusCodes.NOT_FOUND, `Product with id: ${id} not found`)
     );
   }
 

@@ -1,10 +1,8 @@
 const slugify = require('slugify');
 
-const handleSlugs = (schema) => {
+module.exports = (schema) => {
   schema.pre('save', function (next) {
     this.slug = slugify(this.name, { lower: true });
     next();
   });
 };
-
-module.exports = handleSlugs;

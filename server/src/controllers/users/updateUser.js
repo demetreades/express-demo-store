@@ -13,15 +13,15 @@ const bcrypt = require('bcryptjs');
  * @access  Private/Admin
  */
 const createUser = asyncHandler(async (req, res, next) => {
-  const { user_id } = req.params;
-  const user = await User.findByIdAndUpdate(user_id, req.body, {
+  const { id } = req.params;
+  const user = await User.findByIdAndUpdate(id, req.body, {
     new: true,
     runValidators: true,
   });
 
   if (!user) {
     return next(
-      new BaseError(StatusCodes.NOT_FOUND, `User with id: ${user_id} not found`)
+      new BaseError(StatusCodes.NOT_FOUND, `User with id: ${id} not found`)
     );
   }
 

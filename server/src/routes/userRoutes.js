@@ -16,7 +16,7 @@ router
   // .get(protect, admin, getUsers)
 
 router
-  .route('/:user_id')
+  .route('/:id')
   .delete(deleteUser);
   // .delete(protect, admin, deleteUser);
 
@@ -24,7 +24,7 @@ router
   .post('/login', authUser);
 
 router
-  .route('/profile/:user_id')
+  .route('/profile/:id')
   .put(updateUser);
   // .put(protect, updateUser);
 

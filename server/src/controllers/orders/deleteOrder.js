@@ -5,19 +5,18 @@ const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
 const { Order } = require('../../services/models');
 
-
 /**
  * @desc    Delete an order
  * @route   DELETE /api/orders/:id
  * @access  Private/Admin
  */
 const deleteOrder = asyncHandler(async (req, res, next) => {
-  const { order_id } = req.params;
-  const order = await Order.findById(order_id);
+  const { id } = req.params;
+  const order = await Order.findById(id);
 
   if (!order) {
     return next(
-      new BaseError(StatusCodes.NOT_FOUND, `Order with id: ${order_id} not found`)
+      new BaseError(StatusCodes.NOT_FOUND, `Order with id: ${id} not found`)
     );
   }
 
@@ -26,7 +25,7 @@ const deleteOrder = asyncHandler(async (req, res, next) => {
 
   res.status(StatusCodes.OK).json({
     success: true,
-    message: `Order with id: ${order_id} removed`,
+    message: `Order with id: ${id} removed`,
     deletedOrder: {},
   });
 });

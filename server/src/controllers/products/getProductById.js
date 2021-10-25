@@ -11,15 +11,12 @@ const { Product } = require('../../services/models');
  * @access       Public
  */
 const getProductById = asyncHandler(async (req, res, next) => {
-  const { product_id } = req.params;
-  const fetchProduct = await Product.findById(product_id);
+  const { id } = req.params;
+  const fetchProduct = await Product.findById(id);
 
   if (!fetchProduct) {
     return next(
-      new BaseError(
-        StatusCodes.NOT_FOUND,
-        `Product with id: ${product_id} not found`
-      )
+      new BaseError(StatusCodes.NOT_FOUND, `Product with id: ${id} not found`)
     );
   }
 

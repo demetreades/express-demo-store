@@ -11,8 +11,8 @@ const { User } = require('../../services/models');
  * @access  Private/Admin
  */
 const deleteUser = asyncHandler(async (req, res, next) => {
-  const { user_id } = req.params;
-  const user = await User.findById(user_id);
+  const { id } = req.params;
+  const user = await User.findById(id);
 
   if (!user) {
     return next(new BaseError(StatusCodes.NOT_FOUND, 'User not found'));

@@ -20,7 +20,7 @@ router
   .get(getProductBySlug);
 
 router
-  .route('/:product_id')
+  .route('/:id')
   .get(getProductById)
   .put(updateProduct)
   .delete(deleteProduct);

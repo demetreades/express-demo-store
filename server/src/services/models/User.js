@@ -1,5 +1,5 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable security/detect-unsafe-regex */
+'use strict';
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
