@@ -1,19 +1,33 @@
 {
   "name": "express-demo-store",
   "version": "0.1.0",
-  "description": "express CRUD",
+  "description": "express restful api , crud operations",
+  "keywords": [
+    "express",
+    "crud",
+    "rest-api"
+  ],
+  "homepage": "https://github.com/demetreades/express-demo-store#readme",
+  "bugs": {
+    "url": "https://github.com/demetreades/express-demo-store/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demetreades/express-demo-store.git"
+  },
+  "license": "ISC",
+  "author": "Panos Dimitriadis (https://github.com/demetreades)",
   "main": "server/src/bin/www",
   "scripts": {
     "start": "NODE_ENV=production node server/src/bin/www",
     "server": "nodemon --delay 300ms server/src/bin/www",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "fresh": "rm -rf node_modules && npm install && cd ./client && rm -rf node_modules && npm install && npm audit fix && cd ..",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "DATA:delete": "node server/src/services/db/seeds -d",
+    "DATA:import": "node server/src/services/db/seeds"
   },
-  "keywords": [
-    "express",
-    "crud"
-  ],
-  "author": "Panos Dimitriadis (https://github.com/demetreades)",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
@@ -23,13 +37,25 @@
     "express-rate-limit": "^5.5.0",
     "helmet": "^4.6.0",
     "http-status-codes": "^2.1.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "pino": "^7.0.5",
     "slugify": "^1.6.1"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-security": "^1.4.0",
     "nodemon": "^2.0.14",
-    "pino-pretty": "^7.1.0"
+    "pino-pretty": "^7.1.0",
+    "prettier-eslint": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=14.x",
+    "npm": ">=7.x"
   }
 }

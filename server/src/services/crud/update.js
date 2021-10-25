@@ -10,7 +10,7 @@ module.exports = async (Model, id, body) => {
   });
 
   if (!results) {
-    throw new BaseError('Not found', StatusCodes.NOT_FOUND);
+    throw new BaseError(`${[Model]} Not found`, StatusCodes.NOT_FOUND); // [Model] for test
   }
 
   return results;

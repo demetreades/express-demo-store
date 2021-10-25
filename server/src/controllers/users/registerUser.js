@@ -2,7 +2,7 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { BaseError, logger, generateToken } = require('../../utils');
 const { User } = require('../../services/models');
 
 /**

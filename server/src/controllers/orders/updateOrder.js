@@ -3,7 +3,7 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
-const { Orders } = require('../../services/models');
+const { Order } = require('../../services/models');
 
 // updateOrder
 /**
