@@ -1,0 +1,31 @@
+{
+  "name": "express-demo-store",
+  "version": "0.1.0",
+  "description": "express CRUD",
+  "main": "server/src/bin/www",
+  "scripts": {
+    "start": "NODE_ENV=production node server/src/bin/www",
+    "server": "nodemon --delay 300ms server/src/bin/www",
+    "client": "npm start --prefix client"
+  },
+  "keywords": [
+    "express",
+    "crud"
+  ],
+  "author": "Panos Dimitriadis (https://github.com/demetreades)",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "http-status-codes": "^2.1.4",
+    "mongoose": "^6.0.12",
+    "pino": "^7.0.5",
+    "slugify": "^1.6.1"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14",
+    "pino-pretty": "^7.1.0"
+  }
+}
