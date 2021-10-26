@@ -21,6 +21,7 @@ module.exports = async (body) => {
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     };
+
   } else {
     throw new BaseError('Invalid email or password', StatusCodes.UNAUTHORIZED);
   }

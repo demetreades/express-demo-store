@@ -10,6 +10,7 @@ module.exports = asyncHandler(async (req, res) => {
 	const products = await productService.getAll(Product);
 
 	logger.info(`GET ALL PRODUCTS, COUNT: ${products.length}`);
+
 	res.status(StatusCodes.OK).json({
 		success: true,
 		total: products.length,
