@@ -9,7 +9,7 @@ const { User } = require('../../services/models');
 module.exports = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
 
-	const user = await userService.getByProperty(id);
+	const user = await userService.getByProperty(User, id);
 
 	logger.info(
 		`USER PROFILE name: ${user.name} id: ${user._id}, email: ${user.email}`

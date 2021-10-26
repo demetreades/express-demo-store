@@ -9,7 +9,7 @@ const { User } = require('../../services/models');
 const bcrypt = require('bcryptjs');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { body, params: { id } } = req.params;
+	const { body, params: { id } } = req;
 	const user = await userService.update(User, id, body, {
 		new: true,
 		runValidators: true,

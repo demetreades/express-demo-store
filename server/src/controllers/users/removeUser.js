@@ -8,14 +8,10 @@ const { User } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
-	const user = await User.findById(id);
 
-	if (!user) {
-		return next(new BaseError(StatusCodes.NOT_FOUND, 'User not found'));
-	}
+	const user = await userService.remove(User, id);
 
 	logger.info(`USER name: ${user.name}, id: ${user._id} DELETED`);
-	await user.remove();
 
 	res.status(StatusCodes.OK).json({
 		success: true,

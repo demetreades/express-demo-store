@@ -2,29 +2,27 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger, generateToken } = require('../../utils');
-const userService = require('../../services/crud');
-const { User } = require('../../services/models');
+const { generateToken, logger } = require('../../utils');
+const { users: userService } = require('../../services/crud');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { email, password } = req.body;
+	const { body } = req;
 
-	const user = await userService(User, email);
+	const user = await userService.authenticate(body);
 
-	if (user && (await user.matchPassword(password))) {
+	logger.info(
+		`USER name: ${user.name}, id: ${user._id}, email: ${user.email} AUTHENTICATE`
+	);
 
-		logger.info(`USER name: ${user.name}, id: ${user._id}, has been authorized`);
-
-		res.status(StatusCodes.OK).json({
-			_id: user._id,
-			name: user.name,
-			email: user.email,
-			isAdmin: user.isAdmin,
-			token: generateToken(user._id),
+	res.status(StatusCodes.OK).json(
+		{
+			success: true,
+			data: {
+				_id: user._id,
+				name: user.name,
+				email: user.email,
+				isAdmin: user.isAdmin,
+				token: generateToken(user._id),
+			}
 		});
-	} else {
-		return next(
-			new BaseError(StatusCodes.UNAUTHORIZED, 'Invalid email or password')
-		);
-	}
 });

@@ -2,20 +2,15 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger, generateToken } = require('../../utils');
-const userService = require('../../services/crud');
-const { User } = require('../../services/models');
+const { logger, generateToken } = require('../../utils');
+// const { users: { register: registerUser } } = require('../../services/crud');
+const { users: userService } = require('../../services/crud');
 
 module.exports = asyncHandler(async (req, res, next) => {
 	const { body } = req;
 
-	const userExists = await userService.getByProperty(User, body.email);
-
-	if (userExists) {
-		return next(new BaseError(StatusCodes.BAD_REQUEST, 'User already exists'));
-	}
-
-	const user = await userService.create(User, body);
+	const user = await userService.register(body);
+	// const user = await registerUser(body);
 
 	logger.info(
 		`NEW USER name: ${user.name}, id: ${user._id}, email: ${user.email}`
