@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config;
 const { StatusCodes } = require('http-status-codes');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
@@ -18,7 +19,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     req.user = await User.findById(decoded.id).select('-password');
   } else {
     return next(
-      new BaseError(StatusCodes.UNAUTHORIZED, 'Not authorized, no token')
+      new BaseError('Not authorized, no token', StatusCodes.UNAUTHORIZED)
     );
   }
 
