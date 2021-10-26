@@ -7,23 +7,22 @@ const { logger, generateToken } = require('../../utils');
 const { users: userService } = require('../../services/crud');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { body } = req;
+  const { body } = req;
 
-	const user = await userService.register(body);
-	// const user = await registerUser(body);
+  const user = await userService.register(body);
 
-	logger.info(
-		`NEW USER name: ${user.name}, id: ${user._id}, email: ${user.email}`
-	);
+  logger.info(
+    `NEW USER name: ${user.name}, id: ${user._id}, email: ${user.email}`
+  );
 
-	res.status(StatusCodes.CREATED).json({
-		success: true,
-		data: {
-			_id: user._id,
-			name: user.name,
-			email: user.email,
-			isAdmin: user.isAdmin,
-			token: generateToken(user._id),
-		},
-	});
+  res.status(StatusCodes.CREATED).json({
+    success: true,
+    data: {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id),
+    },
+  });
 });
