@@ -13,13 +13,15 @@ router
 	.route('/')
 	.get(getUsers)
 	.post(registerUser);
-// .get(protect, admin, getUsers)
 
 router
 	.route('/:id')
-	.put(updateUser)
-	.delete(removeUser);
+	.put(protect, updateUser)
+	.delete(protect, removeUser);
 // .delete(protect, admin, removeUser);
+
+// router
+// 	.post('/:id/upload', uploadFile);
 
 router
 	.post('/login', authUser);
@@ -27,6 +29,5 @@ router
 router
 	.route('/profile/:id')
 	.get(protect, getUserProfile);
-	// .get(getUserProfile)
 
 module.exports = router;

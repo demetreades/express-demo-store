@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { protect, admin } = require('../../utils');
+const { protect, admin } = require('../utils');
 const {
 	getProducts,
 	getProductById,
@@ -12,8 +12,7 @@ const {
 router
 	.route('/')
 	.get(getProducts)
-	.post(createProduct);
-// .post(protect, admin, createProduct);
+	.post(protect, admin, createProduct);
 
 router
 	.route('/slug/:slug')
@@ -22,8 +21,8 @@ router
 router
 	.route('/:id')
 	.get(getProductById)
-	.put(updateProduct)
-	.delete(removeProduct);
+	.put(protect, admin, updateProduct)
+	.delete(protect, admin, removeProduct);
 // .delete(protect, admin, removeProduct);
 // .put(protect, admin, updateProduct)
 
