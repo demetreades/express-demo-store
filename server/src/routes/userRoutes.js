@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { protect, admin } = require('../../utils');
+const { protect, admin } = require('../utils');
 const {
 	authUser,
 	registerUser,
@@ -26,7 +26,7 @@ router
 
 router
 	.route('/profile/:id')
-	.get(getUserProfile);
-// .get(protect, getUserProfile);
+	.get(protect, getUserProfile);
+	// .get(getUserProfile)
 
 module.exports = router;
