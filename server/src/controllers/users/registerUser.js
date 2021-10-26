@@ -3,46 +3,32 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger, generateToken } = require('../../utils');
+const userService = require('../../services/crud');
 const { User } = require('../../services/models');
 
-/**
- * @description  Register a new user
- * @route        POST /api/users
- * @access       Public
- */
-const registerUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password } = req.body;
+module.exports = asyncHandler(async (req, res, next) => {
+	const { body } = req;
 
-  const userExists = await User.findOne({ email });
+	const userExists = await userService.getByProperty(User, body.email);
 
-  if (userExists) {
-    return next(new BaseError(StatusCodes.BAD_REQUEST, 'User already exists'));
-  }
+	if (userExists) {
+		return next(new BaseError(StatusCodes.BAD_REQUEST, 'User already exists'));
+	}
 
-  const user = await User.create({
-    name,
-    email,
-    password,
-  });
+	const user = await userService.create(User, body);
 
-  if (!user) {
-    return next(new BaseError(StatusCodes.BAD_REQUEST, 'Invalid user data'));
-  }
+	logger.info(
+		`NEW USER name: ${user.name}, id: ${user._id}, email: ${user.email}`
+	);
 
-  logger.info(
-    `USER CREATED with id: ${user._id}, name: ${user.name}, email: ${user.email}, admin: ${user.isAdmin}`
-  );
-  res.status(StatusCodes.CREATED).json({
-    success: true,
-    message: 'User created',
-    data: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
-    },
-  });
+	res.status(StatusCodes.CREATED).json({
+		success: true,
+		data: {
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			isAdmin: user.isAdmin,
+			token: generateToken(user._id),
+		},
+	});
 });
-
-module.exports = registerUser;

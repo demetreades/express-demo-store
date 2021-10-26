@@ -2,42 +2,29 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { logger } = require('../../utils');
+const userService = require('../../services/crud');
 const { User } = require('../../services/models');
 
 const bcrypt = require('bcryptjs');
 
-/**
- * @desc    Update a user
- * @route   POST /api/users/profile/:id
- * @access  Private/Admin
- */
-const createUser = asyncHandler(async (req, res, next) => {
-  const { id } = req.params;
-  const user = await User.findByIdAndUpdate(id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+module.exports = asyncHandler(async (req, res, next) => {
+	const { body, params: { id } } = req.params;
+	const user = await userService.update(User, id, body, {
+		new: true,
+		runValidators: true,
+	});
 
-  if (!user) {
-    return next(
-      new BaseError(StatusCodes.NOT_FOUND, `User with id: ${id} not found`)
-    );
-  }
+	logger.info(`USER name: ${user.name}, id: ${user._id} UPDATED`);
 
-  logger.info(`USER with name: ${user.name}, email: ${user.email} UPDATED`);
-
-  res.status(StatusCodes.OK).json({
-    success: true,
-    message: `User: ${user.name} updated`,
-    data: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      password: bcrypt.hashSync(user.password, 10), // to-fix: den doulevei to hash tou pass meta to update, den kanei match
-    },
-  });
+	res.status(StatusCodes.OK).json({
+		success: true,
+		data: {
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			isAdmin: user.isAdmin,
+			password: bcrypt.hashSync(user.password, 10), // to-fix: den doulevei to hash tou pass meta to update, den kanei match
+		},
+	});
 });
-
-module.exports = createUser;
