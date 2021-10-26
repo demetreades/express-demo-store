@@ -16,10 +16,13 @@ module.exports = asyncHandler(async (req, res, next) => {
     token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = await User.findById(decoded.id).select('-password');
+    req.user = await User.findOne({ id: decoded.id }).select('-password');
   } else {
     return next(
-      new BaseError('Not authorize to access this route', StatusCodes.UNAUTHORIZED)
+      new BaseError(
+        'Not authorize to access this route',
+        StatusCodes.UNAUTHORIZED
+      )
     );
   }
 
