@@ -19,7 +19,7 @@ module.exports = asyncHandler(async (req, res, next) => {
     req.user = await User.findById(decoded.id).select('-password');
   } else {
     return next(
-      new BaseError('Not authorized, no token', StatusCodes.UNAUTHORIZED)
+      new BaseError('Not authorize to access this route', StatusCodes.UNAUTHORIZED)
     );
   }
 
