@@ -1,3 +1,5 @@
+/* eslint-disable security/detect-unsafe-regex */
+/* eslint-disable no-useless-escape */
 'use strict';
 
 const mongoose = require('mongoose');
@@ -9,6 +11,7 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
       unique: true,
+      lowercase: true,
       required: [true, 'Username is required'],
       minlength: [6, 'Username must be longer than 6 characters'],
       maxlength: [24, 'Username must be shorter than 24 characters'],
@@ -41,11 +44,11 @@ const userSchema = mongoose.Schema(
   }
 );
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
+userSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) {
     next();
   }
