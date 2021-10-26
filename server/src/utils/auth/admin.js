@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     next();
   } else {
     return next(
-      new BaseError(StatusCodes.UNAUTHORIZED, 'Not authorized as an admin')
+      new BaseError('Not authorized as an admin', StatusCodes.UNAUTHORIZED)
     );
   }
 };
