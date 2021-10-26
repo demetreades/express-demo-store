@@ -14,6 +14,6 @@ module.exports = asyncHandler(async (req, res) => {
 	res.status(StatusCodes.OK).json({
 		success: true,
 		total: orders.length,
-		orders,
+		data: orders,
 	});
 });
