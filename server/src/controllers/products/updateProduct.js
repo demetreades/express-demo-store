@@ -2,33 +2,22 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { logger } = require('../../utils');
+const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
-/**
- * @desc    Update a product
- * @route   POST /api/products/:id
- * @access  Private/Admin
- */
-const updateProduct = asyncHandler(async (req, res, next) => {
-  const { id } = req.params;
-  const product = await Product.findByIdAndUpdate(id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+module.exports = asyncHandler(async (req, res, next) => {
+	const { body, params: { id } } = req;
 
-  if (!product) {
-    return next(
-      new BaseError(StatusCodes.NOT_FOUND, `Product with id: ${id} not found`)
-    );
-  }
+	const product = await productService.update(Product, id, body, {
+		new: true,
+		runValidators: true,
+	});
 
-  logger.info(`PRODUCT: ${product.name}, ID: ${product._id} UPDATED`);
+	logger.info(`PRODUCT: name: ${product.name}, id: ${product._id} UPDATED`);
 
-  res.status(StatusCodes.OK).json({
-    success: true,
-    product,
-  });
+	res.status(StatusCodes.OK).json({
+		success: true,
+		data: product,
+	});
 });
-
-module.exports = updateProduct;

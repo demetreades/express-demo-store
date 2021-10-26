@@ -3,34 +3,20 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
+const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
-/**
- * @description  Fetch single products
- * @route        GET /api/products/:id
- * @access       Public
- */
-const getProductBySlug = asyncHandler(async (req, res, next) => {
-  const { slug } = req.params;
-  const [product] = await Product.find({ slug });
+module.exports = asyncHandler(async (req, res, next) => {
+	const { slug } = req.params;
 
-  if (!product) {
-    return next(
-      new BaseError(
-        StatusCodes.NOT_FOUND,
-        `Product with slug: ${product.slug} not found`
-      )
-    );
-  }
+	const product = await productService.getByProperty(Product, slug);
 
-  logger.info(
-    `GET Product: ${product.name}, ID: ${product._id}, CATEGORY: ${product.category}, DESC: ${product.description}`
-  );
+	logger.info(
+		`GET PRODUCT name: ${product.name}, id: ${product._id}, slug: ${product.slug}`
+	);
 
-  res.status(StatusCodes.OK).json({
-    success: true,
-    product,
-  });
+	res.status(StatusCodes.OK).json({
+		success: true,
+		data: product,
+	});
 });
-
-module.exports = getProductBySlug;

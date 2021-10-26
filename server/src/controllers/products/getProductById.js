@@ -3,31 +3,20 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { BaseError, logger } = require('../../utils');
+const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
-/**
- * @description  Fetch single products
- * @route        GET /api/products/:id
- * @access       Public
- */
-const getProductById = asyncHandler(async (req, res, next) => {
-  const { id } = req.params;
-  const fetchProduct = await Product.findById(id);
+module.exports = asyncHandler(async (req, res, next) => {
+	const { id } = req.params;
 
-  if (!fetchProduct) {
-    return next(
-      new BaseError(StatusCodes.NOT_FOUND, `Product with id: ${id} not found`)
-    );
-  }
+	const product = await productService.getByProperty(Product, id);
 
-  logger.info(
-    `GET Product: ${fetchProduct.name}, ID: ${fetchProduct._id}, CATEGORY: ${fetchProduct.category}, DESC: ${fetchProduct.description}`
-  );
+	logger.info(
+		`GET PRODUCT name: ${product.name}, id: ${product._id}`
+	);
 
-  res.status(StatusCodes.OK).json({
-    success: true,
-    fetchProduct,
-  });
+	res.status(StatusCodes.OK).json({
+		success: true,
+		data: product,
+	});
 });
-
-module.exports = getProductById;

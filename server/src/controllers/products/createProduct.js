@@ -2,24 +2,19 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { logger } = require('../../utils');
+const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
-/**
- * @desc    Create a product
- * @route   POST /api/products
- * @access  Private/Admin
- */
-const createProduct = asyncHandler(async (req, res) => {
-  const newProduct = await Product.create(req.body);
+module.exports = asyncHandler(async (req, res) => {
+	const { body } = req;
 
-  logger.info(`NEW PRODUCT: ${newProduct.name}, id: ${newProduct._id} CREATED`);
+	const product = await productService.create(Product, body);
 
-  res.status(StatusCodes.CREATED).json({
-    success: true,
-    message: 'new product created',
-    newProduct,
-  });
+	logger.info(`NEW PRODUCT name: ${product.name}, id: ${product._id} CREATED`);
+
+	res.status(StatusCodes.CREATED).json({
+		success: true,
+		data: product,
+	});
 });
-
-module.exports = createProduct;

@@ -2,25 +2,19 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { logger } = require('../../utils');
+const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
-	const product = await Product.findById(id);
 
-	if (!product) {
-		return next(
-			new BaseError(StatusCodes.NOT_FOUND, `Product with id: ${id} not found`)
-		);
-	}
+	const product = await productService.remove(Product, id);
 
-	logger.info(`PRODUCT: ${product.name} ${product._id} DELETED!`);
-	await product.remove();
+	logger.info(`PRODUCT: name: ${product.name}, id: ${product._id} DELETED`);
 
 	res.status(StatusCodes.OK).json({
 		success: true,
-		message: `Product with id: ${id} removed`,
 		data: {},
 	});
 });
