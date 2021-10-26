@@ -3,11 +3,29 @@ const { protect, admin } = require('../utils');
 const {
 	authUser,
 	registerUser,
-	getUserProfile,
+	getUser,
 	getUsers,
+	getProfile,
 	removeUser,
-	updateUser
+	updateUser,
+	logOutUser,
 } = require('../controllers/users');
+
+
+
+router
+	.route('/profile')
+	.get(protect, getProfile);
+
+
+// router
+// 	.post('/:id/upload', uploadFile);
+
+router
+	.route('/login').post(authUser);
+
+router
+	.route('/logout').get(protect, logOutUser);
 
 router
 	.route('/')
@@ -16,18 +34,9 @@ router
 
 router
 	.route('/:id')
+	.get(getUser)
 	.put(protect, updateUser)
-	.delete(protect, removeUser);
-// .delete(protect, admin, removeUser);
+	.delete(removeUser);
 
-// router
-// 	.post('/:id/upload', uploadFile);
-
-router
-	.post('/login', authUser);
-
-router
-	.route('/profile/:id')
-	.get(protect, getUserProfile);
 
 module.exports = router;
