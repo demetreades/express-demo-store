@@ -4,7 +4,7 @@
 const getOrders = require('./getOrders');
 const createOrder = require('./createOrder');
 const updateOrder = require('./updateOrder');
-const deleteOrder = require('./deleteOrder');
+const removeOrder = require('./removeOrder');
 const getOrderById = require('./getOrderById');
 
 // // @desc    Create new order
@@ -87,9 +87,9 @@ const getOrderById = require('./getOrderById');
 // });
 
 module.exports = {
-  getOrders,
-  deleteOrder,
-  getOrderById,
-  createOrder,
-  updateOrder,
+	getOrders,
+	removeOrder,
+	getOrderById,
+	createOrder,
+	updateOrder,
 };

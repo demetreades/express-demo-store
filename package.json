@@ -25,8 +25,8 @@
     "fresh": "rm -rf node_modules && npm install && cd ./client && rm -rf node_modules && npm install && npm audit fix && cd ..",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "DATA:delete": "node server/src/services/db/seeds -d",
-    "DATA:import": "node server/src/services/db/seeds"
+    "DATA:delete": "node server/src/services/db/seeder -d",
+    "DATA:import": "node server/src/services/db/seeder"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
