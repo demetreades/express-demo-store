@@ -5,14 +5,13 @@ const logger = require('../logger');
 
 module.exports = (err, req, res, next) => {
   const { statusCode, message } = err;
-  const { method } = req;
+  const { method, url } = req;
 
   logger.error(
-    `ERROR: ${method} ${
-      statusCode || StatusCodes.INTERNAL_SERVER_ERROR
-    } :: ${message}`
+    `ERROR: ${method} ${statusCode ||
+      StatusCodes.INTERNAL_SERVER_ERROR} :: ${message} :: ${url}`
   );
-  // logger.error(`${err.stack}`); // stack
+  // logger.error(err.stack); // stack
 
   res.status(statusCode || StatusCodes.INTERNAL_SERVER_ERROR).json({
     success: false,
