@@ -7,7 +7,7 @@ const orderService = require('../../services/crud');
 const { Order } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { id } = req.params;
+	const { params : { id } } = req;
 
 	const order = await orderService.remove(Order, id);
 

@@ -8,7 +8,7 @@ const { Order } = require('../../services/models');
 
 
 module.exports = asyncHandler(async (req, res) => {
-	const { id } = req.params;
+	const { params: { id } } = req;
 
 	const order = await orderService.getByProperty(Order, id);
 
