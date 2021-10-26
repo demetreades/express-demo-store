@@ -7,7 +7,7 @@ const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { id } = req.params;
+	const { params: { id} } = req;
 
 	const product = await productService.remove(Product, id);
 
