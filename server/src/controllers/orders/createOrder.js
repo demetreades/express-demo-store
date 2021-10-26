@@ -3,23 +3,18 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { logger } = require('../../utils');
+const orderService = require('../../services/crud');
 const { Order } = require('../../services/models');
 
-/**
- * @desc    Dispatch new order
- * @route   POST /api/orders
- * @access  Public
- */
-const createOrder = asyncHandler(async (req, res) => {
-  const newOrder = await Order.create(req.body);
+module.exports = asyncHandler(async (req, res) => {
+	const { body } = req;
 
-  logger.info(`NEW ORDER: ${newOrder.name}, id: ${newOrder._id} DISPATCHED`);
+	const order = await orderService.create(Order, body);
 
-  res.status(StatusCodes.CREATED).json({
-    success: true,
-    message: `new order with id: ${newOrder._id} dispatched`,
-    newOrder: createOrder,
-  });
+	logger.info(`NEW ORDER id: ${order._id} DISPATCHED`);
+
+	res.status(StatusCodes.CREATED).json({
+		success: true,
+		data: order,
+	});
 });
-
-module.exports = createOrder;
