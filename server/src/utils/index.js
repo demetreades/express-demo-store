@@ -10,16 +10,16 @@ const admin = require('./auth/admin');
 const protect = require('./auth/protect');
 
 module.exports = {
-  BaseError,
-  handleNotFound,
-  handleMongoErrors,
-  handleErrors,
+	BaseError,
+	handleNotFound,
+	handleMongoErrors,
+	handleErrors,
 
-  logger,
-  handleExit,
-  normalizePort,
+	logger,
+	handleExit,
+	normalizePort,
 
-  generateToken,
-  admin,
-  protect,
+	generateToken,
+	admin,
+	protect,
 };
