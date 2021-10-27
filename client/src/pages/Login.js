@@ -43,14 +43,14 @@ const Login = () => {
 						password,
 					})
 					.then((user) => {
-						user.login = true;
+						user.data.data.login = true;
 						localStorage.setItem(
 							'user',
 							JSON.stringify({
 								user,
 							})
 						);
-						setUser(user);
+						setUser(user.data.data);
 						history.push('/')
 					});
 			} catch (err) {
@@ -67,7 +67,7 @@ const Login = () => {
 					variant="h3"
 					color="primary"
 					align="center">
-					Create a New Contact
+					Login
 				</Typography>
 
 				<form noValidate autoComplete="off" onSubmit={handleSubmit}>
