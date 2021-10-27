@@ -14,11 +14,9 @@ module.exports = {
 	handleNotFound,
 	handleMongoErrors,
 	handleErrors,
-
 	logger,
 	handleExit,
 	normalizePort,
-
 	generateToken,
 	admin,
 	protect,
