@@ -12,6 +12,7 @@ const Table = ({ title }) => {
 	// const { products, setProducts } = useContext(ProductsContext);
 	// const { setProducts } = useContext(ProductsContext);
 	const [data, setData] = useState([]);
+	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const headers = {
@@ -98,7 +99,7 @@ const Table = ({ title }) => {
 								.then((resp) => {
 									products.push(newData);
 									// na to anoiksw auto ksana!!!
-									// setProducts(products);
+									setProducts(products);
 									resp.json();
 								})
 								.then((resp) => getProducts());
