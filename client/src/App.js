@@ -1,27 +1,24 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Missing404 from './pages/Missing404';
+import Header from './components/Header';
+import { BrowserRouter as Router } from 'react-router-dom'
+import Routes from './components/Routes'
+import { UserProvider } from './context/UserContext'
 
 const App = () => {
-  return (
-    <>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path={['/', '/home']} exact component={HomePage} />
-          <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="*" component={Missing404} />
-        </Switch>
-      </Router>
-      <Footer />
-    </>
-  );
+	return (
+		<>
+
+			<UserProvider>
+				<Router>
+					<Header />
+					<main>
+						<Routes />
+					</main>
+					<Footer />
+				</Router>
+			</UserProvider>
+		</>
+	);
 };
 
 export default App;
