@@ -3,27 +3,32 @@
 require('dotenv').config();
 const { Product, User, Order } = require('../../services/models');
 const { products, users, orders } = require('./DATA');
-const stuff = require('./DATA');
 const { logger } = require('../../utils');
 const dbConnection = require('./connection');
 
 dbConnection();
 
 const importData = async () => {
-  console.log('mpike0');
   try {
-    await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
+    await Order.deleteMany();
 
     const createdUsers = await User.insertMany(users);
+
     const adminUser = createdUsers[0]._id;
 
     const sampleProducts = products.map((product) => {
       return { ...product, user: adminUser };
     });
 
+    const sampleUser = createdUsers[2]._id;
+    const sampleOrders = orders.map((order) => {
+      return { ...order, user: sampleUser };
+    });
+
     await Product.insertMany(sampleProducts);
+    await Order.insertMany(sampleOrders);
 
     logger.info('\n\nData imported\n');
     process.exit();
@@ -36,9 +41,9 @@ const importData = async () => {
 
 const deleteData = async () => {
   try {
-    await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
+    await Order.deleteMany();
 
     logger.info('\n\nData deleted\n');
     process.exit();
