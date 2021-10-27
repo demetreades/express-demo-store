@@ -22,19 +22,17 @@ const orderSchema = mongoose.Schema(
         },
       },
     ],
-    shippingAddress: {
-      address: {
-        type: String,
-        required: [true, 'Address is required'],
-      },
-      city: {
-        type: String,
-        required: [true, 'City is required'],
-      },
-      postalCode: {
-        type: Number,
-        required: [true, 'Postal Code is required'],
-      },
+    address: {
+      type: String,
+      required: [true, 'Address is required'],
+    },
+    city: {
+      type: String,
+      required: [true, 'City is required'],
+    },
+    postalCode: {
+      type: Number,
+      required: [true, 'Postal Code is required'],
     },
     totalPrice: {
       type: Number,
