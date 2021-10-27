@@ -33,6 +33,7 @@ const userSchema = mongoose.Schema(
       trim: true,
       required: [true, 'Password is required'],
       minlength: [8, 'Password must be longer than 8 characters'],
+      // select: false,
     },
     isAdmin: {
       type: Boolean,
