@@ -1,5 +1,4 @@
 const authUser = require('./authUser');
-const logOutUser = require('./logOutUser');
 const registerUser = require('./registerUser');
 const getUser = require('./getUser');
 const getUsers = require('./getUsers');
@@ -10,10 +9,9 @@ const updateUser = require('./updateUser');
 module.exports = {
   authUser,
   registerUser,
-	getProfile,
+  getProfile,
   getUser,
   getUsers,
   removeUser,
   updateUser,
-	logOutUser,
 };
