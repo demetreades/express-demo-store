@@ -1,23 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 
 import MaterialTable from 'material-table';
-// import { UserContext } from '../../context/UserContext';
-import { ProductsContext } from '../../context/ProductsContext';
+import { UserContext } from '../../context/UserContext';
+// import { ProductsContext } from '../../context/ProductsContext';
 import axios from 'axios';
 
 const Table = ({ title }) => {
-	// const { user } = useContext(UserContext);
-	const user = {
-		email: 'admin@user.com',
-		password: '12345678',
-		isAdmin: false,
-	};
-	const products = [
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-	];
+	const { user } = useContext(UserContext);
+
+
 	// const { products, setProducts } = useContext(ProductsContext);
 	// const { setProducts } = useContext(ProductsContext);
 	const [data, setData] = useState([]);

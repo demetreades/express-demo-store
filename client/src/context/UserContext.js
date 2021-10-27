@@ -8,9 +8,6 @@ export const UserProvider = ({ children }) => {
 
 	useEffect(() => {
 		const getLocalUser = () => {
-			//
-			console.log('mpike edw UserContext - 01');
-			//
 			try {
 				if (!JSON.parse(localStorage.getItem('user'))) {
 					console.log('No existing user from local');
