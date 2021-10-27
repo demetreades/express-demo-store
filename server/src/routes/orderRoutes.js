@@ -11,15 +11,13 @@ const {
 router
 	.route('/')
 	.get(getOrders)
-	.post(createOrder);
-// .get(protect, admin, getOrders)
+	.post(protect, admin, createOrder)
+	.get(protect, admin, getOrders);
 
 router
 	.route('/:id')
-	.get(getOrderById)
-	.put(protect, updateOrder)
-	.delete(protect, removeOrder);
-// .get(protect, getOrderById)
-// .delete(protect, admin, removeOrder);
+	.get(protect, admin, getOrderById)
+	.put(protect, admin, updateOrder)
+	.delete(protect, admin, removeOrder);
 
 module.exports = router;

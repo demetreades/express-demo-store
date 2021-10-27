@@ -23,7 +23,5 @@ router
 	.get(getProductById)
 	.put(protect, admin, updateProduct)
 	.delete(protect, admin, removeProduct);
-// .delete(protect, admin, removeProduct);
-// .put(protect, admin, updateProduct)
 
 module.exports = router;
