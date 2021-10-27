@@ -66,7 +66,7 @@ const Table = ({ title }) => {
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
 							console.log(newData, `:: new Order: ${newData.name} from table`);
-							fetch(`http://localhost:5000/api/orders/`, {
+							fetch(`http://localhost:5000/orders/`, {
 								method: 'POST',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
@@ -83,7 +83,7 @@ const Table = ({ title }) => {
 								oldData,
 								`:: Order: ${oldData.name} deleted from table`
 							);
-							fetch(`http://localhost:5000/api/orders/${oldData._id}`, {
+							fetch(`http://localhost:5000/orders/${oldData._id}`, {
 								method: 'DELETE',
 								headers,
 								body: JSON.stringify({ user: user._id, ...oldData }),
@@ -100,7 +100,7 @@ const Table = ({ title }) => {
 								newData,
 								`:: updated Order: ${newData.name} from table`
 							);
-							fetch(`http://localhost:5000/api/orders/${oldData._id}`, {
+							fetch(`http://localhost:5000/orders/${oldData._id}`, {
 								method: 'PUT',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
