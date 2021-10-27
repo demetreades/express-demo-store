@@ -25,40 +25,37 @@ const Dashboard = () => {
 	return (
 		<div>
 			<h1>Dashboard</h1>
-			<main>
-				<Link to="/dashboard/products">Products...</Link>
-				<Link to="/dashboard/users">Users...</Link>
-				<Link to="/dashboard/orders">Orders...</Link>
-				<br />
-				<Link to="/home">Visit our Homepage</Link>
+			<Link to="/dashboard/products">Products...</Link>
+			<Link to="/dashboard/users">Users...</Link>
+			<Link to="/dashboard/orders">Orders...</Link>
+			<br />
+			<Link to="/home">Visit our Homepage</Link>
 
-				<Button variant="contained" onClick={handleLogOut}>
-					Logout
-				</Button>
+			<Button variant="contained" onClick={handleLogOut}>
+				Logout
+			</Button>
 
-				{/* <ProductsTable title={'Products List'} />
+			{/* <ProductsTable title={'Products List'} />
 				<UsersTable title={'Users List'} />
 				<OrdersTable title={'Orders List'} /> */}
 
+			<Switch>
+				<Route
+					path="/dashboard/products"
+					render={(props) => (
+						<ProductsTable {...props} title={'Products List'} />
+					)}
+				/>
 
-				<Switch>
-					<Route
-						path="/dashboard/products"
-						render={(props) => (
-							<ProductsTable {...props} title={'Products List'} />
-						)}
-					/>
-
-					<Route
-						path="/dashboard/users"
-						render={(props) => <UsersTable {...props} title={'Users List'} />}
-					/>
-					<Route
-						path="/dashboard/Orders"
-						render={(props) => <OrdersTable {...props} title={'Orders List'} />}
-					/>
-				</Switch>
-			</main>
+				<Route
+					path="/dashboard/users"
+					render={(props) => <UsersTable {...props} title={'Users List'} />}
+				/>
+				<Route
+					path="/dashboard/Orders"
+					render={(props) => <OrdersTable {...props} title={'Orders List'} />}
+				/>
+			</Switch>
 		</div>
 	);
 };
