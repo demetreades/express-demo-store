@@ -15,8 +15,8 @@ module.exports = async () => {
     logger.info(
       `Database connected: ${process.env.MONGO_URI}/${process.env.DB_NAME}`
     );
-  } catch (error) {
-    logger.error(`Database connection error: ${error.message}`);
+  } catch (err) {
+    logger.error(`Database connection error: ${err.message}`);
     process.exit(1);
   }
 };
