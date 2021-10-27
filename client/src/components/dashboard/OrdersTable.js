@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 
 import MaterialTable from 'material-table';
-// import { UserContext } from '../../context/UserContext';
-import { ProductsContext } from '../../context/ProductsContext';
+// import { UserContext } from '../context/UserContext';
 import axios from 'axios';
 
 const Table = ({ title }) => {
@@ -12,14 +11,6 @@ const Table = ({ title }) => {
 		password: '12345678',
 		isAdmin: false,
 	};
-	const products = [
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-		{ name: 'eioi' },
-	];
-	// const { products, setProducts } = useContext(ProductsContext);
-	// const { setProducts } = useContext(ProductsContext);
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -29,14 +20,14 @@ const Table = ({ title }) => {
 	};
 
 	useEffect(() => {
-		getProducts();
+		getOrders();
 	}, []);
 
-	const getProducts = async () => {
+	const getOrders = async () => {
 		try {
 			const {
 				data: { data: results },
-			} = await axios.get('http://localhost:5000/products');
+			} = await axios.get('http://localhost:5000/orders');
 			console.log(results);
 			setData(results);
 			setLoading(false);
@@ -46,42 +37,21 @@ const Table = ({ title }) => {
 		}
 	};
 
-	const product = [
-		{
-			title: 'Name',
-			field: 'name',
-		},
-		// { title: 'Image', field: 'image' },
-		{ title: 'Brand', field: 'brand' },
-		{
-			title: 'Description',
-			field: 'description',
-			cellStyle: {
-				textOverflow: 'ellipsis',
-				whiteSpace: 'nowrap',
-				overflow: 'hidden',
-				maxWidth: 200,
-			},
-		},
-		{
-			title: 'Price',
-			field: 'price',
-			type: 'currency',
-			currencySetting: {
-				currencyCode: 'EUR',
-			},
-		},
-		{ title: 'Stock', field: 'inStock', type: 'numeric' },
-		{
-			title: 'Digital',
-			field: 'isDigital',
-			lookup: { true: 'yes', false: 'no' },
-		},
-		{
-			title: 'Visibility',
-			field: 'isActive',
-			lookup: { true: 'yes', false: 'no' },
-		},
+	const orders = [
+		// { title: '#', field: 'id', sorting: false, editable: false },
+		{ title: 'user', field: 'user' },
+		{ title: 'Address', field: 'address' },
+		{ title: 'City', field: 'city' },
+		{ title: 'PostalCode', field: 'postalCode' },
+		// { title: 'Country', field: 'country' },
+		{ title: 'totalPrice', field: 'totalPrice' },
+
+		// {
+		//   title: 'Order items',
+		//   field: 'orderItems',
+		//   render: (rowData) =>
+		//     rowData.orderItems ? rowData.orderItems.join() : 'mpikan!',
+		// },
 	];
 
 	return (
@@ -89,68 +59,62 @@ const Table = ({ title }) => {
 			<MaterialTable
 				title={title}
 				data={data}
-				columns={product}
+				columns={orders}
 				isLoading={loading}
 				editable={{
-					// ADD PRODUCT
+					// // ADD ORDER
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
-							console.log(
-								newData,
-								`:: new product: ${newData.name} from table`
-							);
-							fetch(`http://localhost:5000/products/`, {
+							console.log(newData, `:: new Order: ${newData.name} from table`);
+							fetch(`http://localhost:5000/api/orders/`, {
 								method: 'POST',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
 							})
-								.then((resp) => {
-									products.push(newData);
-									// na to anoiksw auto ksana!!!
-									// setProducts(products);
-									resp.json();
-								})
-								.then((resp) => getProducts());
+								.then((resp) => resp.json())
+								.then((resp) => getOrders());
 							resolve();
 						}),
 
-					// DELETE PRODUCT
+					// DELETE ORDER
 					onRowDelete: (oldData) =>
 						new Promise((resolve, reject) => {
 							console.log(
 								oldData,
-								`:: product: ${oldData.name} deleted from table`
+								`:: Order: ${oldData.name} deleted from table`
 							);
-							fetch(`http://localhost:5000/products/${oldData._id}`, {
+							fetch(`http://localhost:5000/api/orders/${oldData._id}`, {
 								method: 'DELETE',
 								headers,
 								body: JSON.stringify({ user: user._id, ...oldData }),
 							})
 								.then((resp) => resp.json())
-								.then((resp) => getProducts());
+								.then((resp) => getOrders());
 							resolve();
 						}),
 
-					// UPDATE PRODUCT
+					// UPDATE ORDER
 					onRowUpdate: (newData, oldData) =>
 						new Promise((resolve, reject) => {
 							console.log(
 								newData,
-								`:: updated product: ${newData.name} from table`
+								`:: updated Order: ${newData.name} from table`
 							);
-							fetch(`http://localhost:5000/products/${oldData._id}`, {
+							fetch(`http://localhost:5000/api/orders/${oldData._id}`, {
 								method: 'PUT',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
 							})
 								.then((resp) => resp.json())
-								.then((resp) => getProducts());
+								.then((resp) => getOrders());
 							resolve();
 						}),
 				}}
 				options={{
+					selection: true,
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
+					// filtering: true,
 					pageSizeOptions: [5, 10, 25, 50],
 					pageSize: 10,
 					paginationType: 'stepped',

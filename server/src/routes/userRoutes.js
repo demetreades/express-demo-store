@@ -12,11 +12,11 @@ const {
 
 router
 	.route('/')
-	.get(protect, getUsers)
+	.get(getUsers)
 	.post(registerUser);
 
 router
-		.route('/login').post(authUser);
+	.route('/login').post(authUser);
 
 router
 	.route('/profile')
@@ -29,6 +29,6 @@ router
 	.delete(protect, removeUser);
 
 // router
-	// 	.post('/:id/upload', uploadFile);
+// 	.post('/:id/upload', uploadFile);
 
 module.exports = router;
