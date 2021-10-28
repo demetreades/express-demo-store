@@ -35,7 +35,6 @@ const Login = () => {
 			setPasswordError(true);
 		}
 		if (email && password) {
-			console.log(email, password);
 			try {
 				axios
 					.post('http://localhost:5000/users/login', {
@@ -75,7 +74,7 @@ const Login = () => {
 						onChange={(e) => setEmail(e.target.value)}
 						className={classes.field}
 						variant="outlined"
-						label="Contact email"
+						label="Email"
 						fullWidth
 						error={emailError}
 						required
@@ -84,9 +83,10 @@ const Login = () => {
 						onChange={(e) => setPassword(e.target.value)}
 						className={classes.field}
 						variant="outlined"
-						label="password"
+						label="Password"
 						error={passwordError}
 						fullWidth
+						required
 					/>
 					<Button variant="contained" onClick={() => history.push('/')}>
 						Back Home
