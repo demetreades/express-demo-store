@@ -6,12 +6,13 @@ const {
 	removeOrder,
 	createOrder,
 	updateOrder,
+	getOrdersByUser
 } = require('../controllers/orders/index');
 
 router
 	.route('/')
 	.get(getOrders)
-	.post(protect, admin, createOrder)
+	.post(createOrder)
 	.get(protect, admin, getOrders);
 
 router
@@ -19,5 +20,9 @@ router
 	.get(protect, admin, getOrderById)
 	.put(protect, admin, updateOrder)
 	.delete(protect, admin, removeOrder);
+
+router
+	.route('/user/:id')
+	.get(getOrdersByUser);
 
 module.exports = router;
