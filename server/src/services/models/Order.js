@@ -19,10 +19,6 @@ const orderSchema = mongoose.Schema(
 		},
 		orderItems: [
 			{
-				quantity: {
-					type: Number,
-					required: true,
-				},
 				product: {
 					type: mongoose.Schema.Types.ObjectId,
 					required: true,
@@ -68,5 +64,18 @@ const orderSchema = mongoose.Schema(
 		timestamps: true,
 	}
 );
+
+// orderSchema.pre('save', function (next) {
+// 	if (this.isDelivered === false) {
+// 		this.deliveredAt = new Date();
+// 		next();
+// 	}
+// 	next();
+// });
+
+// orderSchema.pre('save', function (next) {
+// 	this.paidAt = new Date();
+// 	next();
+// });
 
 module.exports = mongoose.model('Order', orderSchema);
