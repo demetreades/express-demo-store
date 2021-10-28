@@ -37,11 +37,13 @@ const HomePage = () => {
 			<Container maxWidth="md">
 				<Grid container>
 					{loading ? (
-						products.map((product) => (
-							<Grid items key={product._id} xs={12} lg={10}>
-								<ProductCard product={product} />
-							</Grid>
-						))
+						products
+							.filter((product) => product.isActive === true)
+							.map((product) => (
+								<Grid items key={product._id} xs={12} lg={10}>
+									<ProductCard product={product} />
+								</Grid>
+							))
 					) : (
 						<CircularProgress color="secondary" />
 					)}
