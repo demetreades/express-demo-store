@@ -1,17 +1,17 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import ProductCard from '../components/ProductCard';
-import { UserContext } from '../context/UserContext'
+import Cart from '../components/Cart';
 
 const HomePage = () => {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const { user } = useContext(UserContext);
 
 	useEffect(() => {
 		setLoading(false);
@@ -31,17 +31,16 @@ const HomePage = () => {
 		fetchData();
 	}, []);
 
-	console.log(user, '\n\nHOMEPAGE!!!!!!!!!\n\n')
-
 	return (
 		<>
 			<Container maxWidth="md">
+				<Cart />
 				<Grid container>
 					{loading ? (
 						products
 							.filter((product) => product.isActive === true)
 							.map((product) => (
-								<Grid items key={product._id} xs={12} lg={10}>
+								<Grid items key={product._id} xs={12} md={8} lg={4}>
 									<ProductCard product={product} />
 								</Grid>
 							))
