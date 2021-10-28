@@ -5,8 +5,8 @@ import { UserContext } from '../../context/UserContext';
 import axios from 'axios';
 
 const Table = ({ title }) => {
-
 	const { user } = useContext(UserContext);
+
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -35,6 +35,7 @@ const Table = ({ title }) => {
 
 	const userColumns = [
 		{ title: 'Name', field: 'name' },
+		{ title: 'User ID', field: '_id', editable: false },
 		{ title: 'Email', field: 'email' },
 		// { title: 'Password', field: 'password' },
 		// { title: 'Orders', field: 'orders' },
@@ -90,7 +91,7 @@ const Table = ({ title }) => {
 								newData,
 								`:: updated product: ${newData.name} from table`
 							);
-							fetch(`http://localhost:5000/users/profile/${oldData._id}`, {
+							fetch(`http://localhost:5000/users/${oldData._id}`, {
 								method: 'PUT',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
@@ -101,12 +102,10 @@ const Table = ({ title }) => {
 						}),
 				}}
 				options={{
-					// selection: true,
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
-					// filtering: true,
-					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 10,
+					pageSizeOptions: [5, 15, 25, 50],
+					pageSize: 15,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

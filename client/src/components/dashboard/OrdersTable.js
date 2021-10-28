@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
+
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -33,13 +34,18 @@ const Table = ({ title }) => {
 	};
 
 	const orders = [
-		// { title: '#', field: 'id', sorting: false, editable: false },
-		{ title: 'user', field: 'user' },
+		{ title: 'User ID', field: 'user', editable: false },
+		{ title: 'Firstname', field: 'firstName' },
+		{ title: 'Lastname', field: 'lastName' },
 		{ title: 'Address', field: 'address' },
 		{ title: 'City', field: 'city' },
-		{ title: 'PostalCode', field: 'postalCode' },
+		{ title: 'Postal Code', field: 'postalCode' },
 		// { title: 'Country', field: 'country' },
-		{ title: 'totalPrice', field: 'totalPrice' },
+		{ title: 'Total Price', field: 'totalPrice', editable: false },
+		{ title: 'Paid', field: 'isPaid', lookup: { true: 'yes', false: 'no' } },
+		{ title: 'Payment Date', field: 'paidAt' },
+		{ title: 'Delivered', field: 'isDelivered', lookup: { true: 'yes', false: 'no' } },
+		{ title: 'Delivery Date', field: 'deliveredAt' },
 
 		// {
 		//   title: 'Order items',
@@ -57,10 +63,9 @@ const Table = ({ title }) => {
 				columns={orders}
 				isLoading={loading}
 				editable={{
-					// // ADD ORDER
+					// ADD ORDER
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
-							console.log(newData, `:: new Order: ${newData.name} from table`);
 							fetch(`http://localhost:5000/orders/`, {
 								method: 'POST',
 								headers,
@@ -106,12 +111,10 @@ const Table = ({ title }) => {
 						}),
 				}}
 				options={{
-					selection: true,
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
-					// filtering: true,
-					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 10,
+					pageSizeOptions: [5, 15, 25, 50],
+					pageSize: 15,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

@@ -2,17 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 
 import MaterialTable from 'material-table';
 import { UserContext } from '../../context/UserContext';
-// import { ProductsContext } from '../../context/ProductsContext';
 import axios from 'axios';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
 
-
-	// const { products, setProducts } = useContext(ProductsContext);
-	// const { setProducts } = useContext(ProductsContext);
 	const [data, setData] = useState([]);
-	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	const headers = {
@@ -43,6 +38,7 @@ const Table = ({ title }) => {
 			title: 'Name',
 			field: 'name',
 		},
+		{ title: 'User ID', field: 'user', editable: false },
 		// { title: 'Image', field: 'image' },
 		{ title: 'Brand', field: 'brand' },
 		{
@@ -87,21 +83,12 @@ const Table = ({ title }) => {
 					// ADD PRODUCT
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
-							console.log(
-								newData,
-								`:: new product: ${newData.name} from table`
-							);
 							fetch(`http://localhost:5000/products/`, {
 								method: 'POST',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
 							})
-								.then((resp) => {
-									products.push(newData);
-									// na to anoiksw auto ksana!!!
-									setProducts(products);
-									resp.json();
-								})
+								.then((resp) => resp.json())
 								.then((resp) => getProducts());
 							resolve();
 						}),
@@ -143,8 +130,8 @@ const Table = ({ title }) => {
 				options={{
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
-					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 10,
+					pageSizeOptions: [5, 15, 25, 50],
+					pageSize: 15,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',
