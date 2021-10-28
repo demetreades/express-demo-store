@@ -34,8 +34,8 @@ const Table = ({ title }) => {
 	};
 
 	const userColumns = [
-		{ title: 'Name', field: 'name' },
 		{ title: 'User ID', field: '_id', editable: false },
+		{ title: 'Name', field: 'name' },
 		{ title: 'Email', field: 'email' },
 		// { title: 'Password', field: 'password' },
 		// { title: 'Orders', field: 'orders' },

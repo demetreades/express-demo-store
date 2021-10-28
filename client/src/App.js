@@ -1,15 +1,15 @@
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { UserContext } from './context/UserContext'
 
-import Dashboard from './pages/Dashboard';
-import Footer from './components/Footer';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import Login from './pages/Login';
-import Missing404 from './pages/Missing404';
-import ProtectedRoute from './utils/ProtectedRoute';
-import { BrowserRouter as Router } from 'react-router-dom'
 import SignUp from './pages/SignUp';
-import { UserContext } from './context/UserContext'
+import Dashboard from './pages/Dashboard';
+import ProtectedRoute from './utils/ProtectedRoute';
+import Missing404 from './pages/Missing404';
+
 import { useContext } from 'react'
 
 const App = () => {

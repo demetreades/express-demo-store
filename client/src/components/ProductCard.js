@@ -1,12 +1,13 @@
 import { CardActionArea, IconButton } from '@material-ui/core';
+import axios from 'axios';
 
-import Button from '@material-ui/core/Button';
-// import CardContent from '@material-ui/core/CardContent';
-// import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
+import Button from '@material-ui/core/Button';
 import { DeleteOutlined } from '@material-ui/icons';
-import axios from 'axios';
+// import CardContent from '@material-ui/core/CardContent';
+// import Typography from '@material-ui/core/Typography';
+
 import useStyles from '../styles';
 
 const ProductCard = ({ product }) => {
@@ -29,8 +30,8 @@ const ProductCard = ({ product }) => {
 				title={product.name || 'name'}
 				subheader={product.description || 'please add description'}
 			/>
-			<CardActionArea>
-				{/* <CardContent>
+			{/* <CardActionArea>
+				<CardContent>
           <Typography variant="body2">
             {product.address ?? 'Lorem Address quis 122D'}
           </Typography>
@@ -43,7 +44,7 @@ const ProductCard = ({ product }) => {
               XXXXXXXXX
             </Typography>
           )}
-        </CardContent> */}
+        </CardContent>
 				<CardActionArea>
 					<Button size="small" color="primary">
 						ADD
@@ -52,7 +53,7 @@ const ProductCard = ({ product }) => {
 						REMOVE
 					</Button>
 				</CardActionArea>
-			</CardActionArea>
+			</CardActionArea> */}
 		</Card>
 	);
 };

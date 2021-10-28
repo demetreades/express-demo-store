@@ -1,13 +1,14 @@
 import { useContext, useState } from 'react';
-
-import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
-import SendIcon from '@material-ui/icons/Send';
-import TextField from '@material-ui/core/TextField';
-import { Typography } from '@material-ui/core';
-import { UserContext } from '../context/UserContext';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+import { Typography } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import SendIcon from '@material-ui/icons/Send';
+import Button from '@material-ui/core/Button';
+
+import { UserContext } from '../context/UserContext';
 import useStyles from '../styles';
 
 const Register = () => {

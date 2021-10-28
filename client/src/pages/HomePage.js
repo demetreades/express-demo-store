@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+
 import ProductCard from '../components/ProductCard';
 import { UserContext } from '../context/UserContext'
-import axios from 'axios';
 
 const HomePage = () => {
 	const [products, setProducts] = useState([]);

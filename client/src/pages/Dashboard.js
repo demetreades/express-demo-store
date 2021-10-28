@@ -1,11 +1,12 @@
 import { Link, Route, Switch, useHistory } from 'react-router-dom';
+import { useContext } from 'react'
 
 import Button from '@material-ui/core/Button';
-import OrdersTable from '../components/dashboard/OrdersTable';
-import ProductsTable from '../components/dashboard/ProductsTable';
-import { UserContext } from '../context/UserContext'
 import UsersTable from '../components/dashboard/UsersTable';
-import { useContext } from 'react'
+import ProductsTable from '../components/dashboard/ProductsTable';
+import OrdersTable from '../components/dashboard/OrdersTable';
+
+import { UserContext } from '../context/UserContext'
 
 const Dashboard = () => {
 	const { user, setUser } = useContext(UserContext);
