@@ -41,7 +41,12 @@ const Table = ({ title }) => {
 		{ title: 'City', field: 'city' },
 		{ title: 'Postal Code', field: 'postalCode' },
 		// { title: 'Country', field: 'country' },
-		{ title: 'Total Price', field: 'totalPrice', editable: false },
+		{
+			title: 'Total Price', field: 'totalPrice', editable: false, type: 'currency',
+			currencySetting: {
+				currencyCode: 'EUR',
+			}
+		},
 		{ title: 'Paid', field: 'isPaid', lookup: { true: 'yes', false: 'no' } },
 		{ title: 'Payment Date', field: 'paidAt' },
 		{ title: 'Delivered', field: 'isDelivered', lookup: { true: 'yes', false: 'no' } },
@@ -113,8 +118,8 @@ const Table = ({ title }) => {
 				options={{
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
-					pageSizeOptions: [5, 15, 25, 50],
-					pageSize: 15,
+					pageSizeOptions: [5, 10, 25, 50],
+					pageSize: 5,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

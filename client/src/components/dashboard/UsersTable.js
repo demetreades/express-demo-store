@@ -104,8 +104,8 @@ const Table = ({ title }) => {
 				options={{
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
-					pageSizeOptions: [5, 15, 25, 50],
-					pageSize: 15,
+					pageSizeOptions: [5, 10, 25, 50],
+					pageSize: 5,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',
