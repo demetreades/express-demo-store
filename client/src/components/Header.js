@@ -12,7 +12,7 @@ const Header = () => {
 	const classes = useStyles();
 
 	return (
-		<>
+		<header>
 			<AppBar position="relative">
 				<Toolbar>
 					<Accessibility className={classes.icon} />
@@ -53,7 +53,7 @@ const Header = () => {
 					)}
 				</Toolbar>
 			</AppBar>
-		</>
+		</header>
 	);
 };
 
