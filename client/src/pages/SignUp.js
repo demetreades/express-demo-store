@@ -16,29 +16,41 @@ const Register = () => {
 
 	const { setUser } = useContext(UserContext);
 
+	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [passwordVerify, setPasswordVerify] = useState('');
 
+	const [usernameError, setUsernameError] = useState(false);
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
+	const [passwordVerifyError, setPasswordVerifyError] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		setUsernameError(false);
 		setEmailError(false);
 		setPasswordError(false);
+		setPasswordVerifyError(false);
 
+		if (username === '') {
+			setUsernameError(true);
+		}
 		if (email === '') {
 			setEmailError(true);
 		}
 		if (password === '') {
 			setPasswordError(true);
 		}
-		if (email && password) {
-			console.log(email, password);
+		if (passwordVerify === '') {
+			setPasswordVerifyError(true);
+		}
+		if (username && email && password && (password === passwordVerify)) {
 			try {
 				axios
-					.post('http://localhost:5000/users/login', {
+					.post('http://localhost:5000/users', {
+						name: username,
 						email,
 						password,
 					})
@@ -51,8 +63,7 @@ const Register = () => {
 							})
 						);
 						setUser(user);
-						history.push('/home');
-						window.location.reload();
+						history.push('/login');
 					});
 			} catch (err) {
 				console.log('POST ERROR: ', err);
@@ -73,10 +84,19 @@ const Register = () => {
 
 				<form noValidate autoComplete="off" onSubmit={handleSubmit}>
 					<TextField
+						onChange={(e) => setUsername(e.target.value)}
+						className={classes.field}
+						variant="outlined"
+						label="Username"
+						fullWidth
+						error={usernameError}
+						required
+					/>
+					<TextField
 						onChange={(e) => setEmail(e.target.value)}
 						className={classes.field}
 						variant="outlined"
-						label="Contact email"
+						label="Email"
 						fullWidth
 						error={emailError}
 						required
@@ -85,9 +105,19 @@ const Register = () => {
 						onChange={(e) => setPassword(e.target.value)}
 						className={classes.field}
 						variant="outlined"
-						label="password"
+						label="Password"
 						error={passwordError}
 						fullWidth
+						required
+					/>
+					<TextField
+						onChange={(e) => setPasswordVerify(e.target.value)}
+						className={classes.field}
+						variant="outlined"
+						label="Verify Password"
+						error={passwordVerifyError}
+						fullWidth
+						required
 					/>
 					<Button variant="contained" onClick={() => history.push('/')}>
 						Back Home
@@ -99,7 +129,7 @@ const Register = () => {
 						variant="contained"
 						startIcon={<SendIcon />}
 					>
-						Submit
+						Register
 					</Button>
 				</form>
 			</Container>
