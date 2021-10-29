@@ -9,10 +9,7 @@ const { Order } = require('../../services/models');
 module.exports = asyncHandler(async (req, res, next) => {
 	const { body, params: { id } } = req;
 
-	const order = await orderService.update(Order, id, body, {
-		new: true,
-		runValidators: true,
-	});
+	const order = await orderService.update(Order, id, body);
 
 	logger.info(`ORDER id: ${order._id} UPDATED`);
 

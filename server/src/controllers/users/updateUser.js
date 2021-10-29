@@ -11,10 +11,7 @@ const bcrypt = require('bcryptjs');
 module.exports = asyncHandler(async (req, res, next) => {
 	const { body, params: { id } } = req;
 
-	const user = await userService.update(User, id, body, {
-		new: true,
-		runValidators: true,
-	});
+	const user = await userService.update(User, id, body);
 
 	logger.info(`USER name: ${user.name}, id: ${user._id} UPDATED`);
 
