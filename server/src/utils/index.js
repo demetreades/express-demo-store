@@ -1,6 +1,7 @@
 const BaseError = require('./errors/BaseError');
 const handleNotFound = require('./errors/handleNotFound');
 const handleMongoErrors = require('./errors/handleMongoErrors');
+const handleMulterErrors = require('./errors/handleMulterErrors');
 const handleErrors = require('./errors/handleErrors');
 const logger = require('./logger');
 const handleExit = require('./handleExit');
@@ -14,6 +15,7 @@ module.exports = {
 	BaseError,
 	handleNotFound,
 	handleMongoErrors,
+	handleMulterErrors,
 	handleErrors,
 	logger,
 	handleExit,
