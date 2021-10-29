@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import MaterialTable from 'material-table';
+import dayjs from 'dayjs';
+
 import { UserContext } from '../../context/UserContext';
-import axios from 'axios';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -24,7 +26,7 @@ const Table = ({ title }) => {
 			const {
 				data: { data: results },
 			} = await axios.get('http://localhost:5000/users');
-			console.log(results);
+			console.log(results, 'USERS TABLE');
 			setData(results);
 			setLoading(false);
 		} catch (err) {
@@ -37,9 +39,13 @@ const Table = ({ title }) => {
 		{ title: 'User ID', field: '_id', editable: false },
 		{ title: 'Name', field: 'name' },
 		{ title: 'Email', field: 'email' },
-		// { title: 'Password', field: 'password' },
-		// { title: 'Orders', field: 'orders' },
 		{ title: 'Admin', field: 'isAdmin', lookup: { true: 'yes', false: 'no' } },
+		{
+			title: 'Created on',
+			field: 'createdAt',
+			type: 'date',
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
+		},
 	];
 
 	return (
@@ -105,7 +111,7 @@ const Table = ({ title }) => {
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
 					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 5,
+					pageSize: 10,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

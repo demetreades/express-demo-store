@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import MaterialTable from 'material-table';
+import dayjs from 'dayjs';
+
 import { UserContext } from '../../context/UserContext';
-import axios from 'axios';
+import { Button } from '@material-ui/core';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -15,16 +18,30 @@ const Table = ({ title }) => {
 		Authorization: `Bearer ${user.token}`,
 	};
 
+
+
 	useEffect(() => {
 		getProducts();
 	}, []);
+
+	const handleUpload = async (rowData) => {
+		console.log('MPIKE HANDLEUPLOAD', rowData);
+		try {
+			const {
+				data: { data: results },
+			} = await axios.post(`http://localhost:5000/products/upload/img/${rowData._id}`, { headers });
+			console.log(results, 'PRODUCT UPLOAD RESULTS ');
+		} catch (err) {
+			console.log('UPLOAD ERROR: ', err);
+		}
+	}
 
 	const getProducts = async () => {
 		try {
 			const {
 				data: { data: results },
 			} = await axios.get('http://localhost:5000/products');
-			console.log(results);
+			console.log(results, 'PRODUCTS TABLE');
 			setData(results);
 			setLoading(false);
 		} catch (err) {
@@ -39,7 +56,24 @@ const Table = ({ title }) => {
 			field: 'name',
 		},
 		{ title: 'User ID', field: 'user', editable: false },
-		// { title: 'Image', field: 'image' },
+		{ title: 'Image', field: 'image' },
+		{
+			title: 'Upload Image', field: 'upload', editable: false, render: (rowData) =>
+			(
+				< Button
+					variant="contained"
+					component="label"
+				>
+					Upload
+					< input
+						type="file"
+						name="image"
+						onClick={() => handleUpload(rowData)}
+						hidden
+					/>
+				</Button >
+			)
+		},
 		{ title: 'Brand', field: 'brand' },
 		{
 			title: 'Description',
@@ -69,6 +103,13 @@ const Table = ({ title }) => {
 			title: 'Visibility',
 			field: 'isActive',
 			lookup: { true: 'yes', false: 'no' },
+		},
+		{
+			title: 'Created on',
+			field: 'createdAt',
+			type: 'date',
+			editable: false,
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
 		},
 	];
 
@@ -131,7 +172,7 @@ const Table = ({ title }) => {
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
 					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 5,
+					pageSize: 10,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

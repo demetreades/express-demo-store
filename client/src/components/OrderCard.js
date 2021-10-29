@@ -1,8 +1,6 @@
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import Button from '@material-ui/core/Button';
-import { DeleteOutlined } from '@material-ui/icons';
-import { CardActionArea, IconButton } from '@material-ui/core';
+import { CardActionArea } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
@@ -11,25 +9,37 @@ import useStyles from '../styles';
 const OrderCard = ({ order, index }) => {
 	const classes = useStyles();
 
+	const fullTitle = `${index + 1}. ${order.lastName} ${order.firstName}`
+
 	return (
-		<Card className={classes.card, classes.orderCard}>
-			<CardHeader
-				title={`${index + 1}# ${order.lastName} ${order.firstName}`}
-				subheader={`id: ${order._id}, user: ${order.user}`}
+		<Card className={classes.orderCard}>
+			<CardHeader className={classes.orderTitle}
+				title={
+					fullTitle.length <= 20
+						? fullTitle
+						: `${fullTitle.slice(0, 20)}...`
+				}
+				subheader={`id: ${order._id}`}
 			/>
-			<CardActionArea>
+			<CardActionArea >
 				<CardContent>
-					<Typography variant="body2">
-						Shipping Address: {`${order.address}, ${order.city} : ${order.postalCode}`}
+					<Typography
+						variant="body2"
+						className={classes.orderAddress}
+					>
+						Shipping Address: <br />{`${order.address}, ${order.city} : ${order.postalCode}`}
 					</Typography>
-					<Typography variant="body2">
+					<Typography
+						variant="body2"
+						className={classes.orderPrice}
+					>
 						Total Price: {`${order.totalPrice}€`}
 					</Typography>
-					<Typography variant="body2">
-						Is Paid: {order.isPaid ? 'payed' : 'not paid'}
-					</Typography>
-					<Typography variant="body2">
+					<Typography variant="body2" color={'secondary'}>
 						Is Delivered: {order.isDelivered ? 'delivered' : 'not delivered'}
+					</Typography>
+					<Typography variant="body2" color={'textSecondary'}>
+						Is Paid: {order.isPaid ? 'payed' : 'not paid'}
 					</Typography>
 				</CardContent>
 			</CardActionArea>

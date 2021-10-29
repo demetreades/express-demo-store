@@ -16,16 +16,29 @@ const Dashboard = () => {
 					<Route
 						path="/dashboard/products"
 						render={(props) => (
-							<ProductsTable {...props} title={'Products List'} />
+							<ProductsTable
+								{...props}
+								title={'Products List'}
+							/>
 						)}
 					/>
 					<Route
 						path="/dashboard/users"
-						render={(props) => <UsersTable {...props} title={'Users List'} />}
+						render={(props) => (
+							<UsersTable
+								{...props}
+								title={'Users List'}
+							/>
+						)}
 					/>
 					<Route
 						path="/dashboard/Orders"
-						render={(props) => <OrdersTable {...props} title={'Orders List'} />}
+						render={(props) => (
+							<OrdersTable
+								{...props}
+								title={'Orders List'}
+							/>
+						)}
 					/>
 				</Switch>
 			</section>

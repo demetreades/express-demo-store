@@ -4,9 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import { CardActionArea, IconButton } from '@material-ui/core';
-import { DeleteOutlined } from '@material-ui/icons';
-// import Button from '@material-ui/core/Button';
+import { CardMedia, CardActionArea, IconButton } from '@material-ui/core';
+
+import AddIcon from '@material-ui/icons/Add';
 
 import { CartContext } from '../context/CartContext';
 import useStyles from '../styles';
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
 	const { cart, setCart, setCount } = useContext(CartContext);
 
 	const handleAddToCart = () => {
-		console.log('Product: ', product.name, product._id, 'added');
+		console.log(`CART: items: ${cart.length + 1} :: Product: ${product.name}, ${product._id} added`);
 		cart.push(product);
 		setCart(cart);
 		setCount(cart.length);
@@ -28,50 +28,69 @@ const ProductCard = ({ product }) => {
 				cart,
 			})
 		);
-		console.log(cart, 'On cart click');
 	};
+
+
 
 	return (
 		<Card className={classes.productCard}>
+			<CardMedia
+				component="img"
+				image={product.image}
+				alt="Product image"
+				height="220"
+				title="Product image"
+			/>
 			<CardHeader
+				className={classes.cardTitle}
 				action={
-					<IconButton>
-						{/* <AddIcon onClick={handleAddToCart} /> */}
-						<DeleteOutlined onClick={handleAddToCart} />
+					<IconButton
+						disabled={product.inStock === 0 ? true : false}
+					>
+						<AddIcon
+							variant="body2"
+							color="secondary"
+							onClick={handleAddToCart}
+						/>
 					</IconButton>
 				}
-				title={product.name ?? 'name'}
-				subheader={product.description ?? 'please add description'}
+				title={
+					product.name.length <= 33
+						? product.name
+						: `${product.name.slice(0, 33)}...`
+				}
+				subheader={`stock: ${product.inStock ? product.inStock : 'empty'}`}
 			/>
 			<CardActionArea>
-				<CardContent>
-					<Typography variant="body2">
-						{product.brand ?? 'please add a brand'}
-					</Typography>
-					<Typography variant="body2">
-						{product.price ?? 'please add a price'}€
+				<CardContent
+					action={handleAddToCart}
+				>
+					<Typography
+						variant="body2"
+						className={classes.description}
+					>
+						{product.description.length <= 140
+							? product.description
+							: `${product.description.slice(0, 140)}...`}
 					</Typography>
 
-				</CardContent>
-				{/* <CardContent>
-					<Typography variant="body2">
-						{product.address ?? 'Lorem Address quis 122D'}
+					<br />
+
+					<Typography
+						variant="body2"
+					>
+						{product.brand ?? 'Please add a brand'}
 					</Typography>
-					{product.telephone.map((tel) => (
-						<Typography variant="body2" color="textSecondary">
-							{tel}
-						</Typography>
-					)) ?? (
-							<Typography variant="body2" color="textSecondary">
-								XXXXXXXXX
-							</Typography>
-						)}
-				</CardContent> */}
-				{/* <CardActionArea>
-					<Button size="small" color="primary" onClick={handleAddToCart}>
-						ADD
-					</Button>
-				</CardActionArea> */}
+
+					<br />
+
+					<Typography
+						variant="body2"
+						color="secondary"
+					>
+						{product.price ?? 'Please add a price'}€
+					</Typography>
+				</CardContent>
 			</CardActionArea>
 		</Card>
 	);

@@ -51,6 +51,11 @@ const Login = () => {
 							})
 						);
 						setUser(user.data.data);
+						console.log(
+							`LOGIN :: ${user.data.data.name} ======================== `,
+							user.data.data
+						);
+
 						history.push('/')
 					});
 			} catch (err) {
@@ -62,41 +67,48 @@ const Login = () => {
 	return (
 		<>
 			<Container>
-				<Typography
-					className={classes.mt5}
-					variant="h3"
-					color="primary"
-					align="center">
-					Login
-				</Typography>
-
 				<form noValidate autoComplete="off" onSubmit={handleSubmit}>
+					<Typography
+						className={classes.mt5Header}
+						variant="h4"
+						color="primary"
+						align="center">
+						Login
+					</Typography>
 					<TextField
 						onChange={(e) => setEmail(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Email"
-						fullWidth
 						error={emailError}
+						type="email"
+						fullWidth
 						required
 					/>
 					<TextField
 						onChange={(e) => setPassword(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Password"
+						type="password"
 						error={passwordError}
 						fullWidth
 						required
 					/>
-					<Button variant="contained" onClick={() => history.push('/')}>
+					<Button
+						variant="contained"
+						color="primary"
+						size="large"
+						onClick={() => history.push('/')}
+					>
 						Back Home
 					</Button>
 					<Button
-						className={classes.ml5}
+						className={classes.ml10}
 						type="submit"
 						color="secondary"
 						variant="contained"
+						size="large"
 						startIcon={<SendIcon />}
 					>
 						Submit

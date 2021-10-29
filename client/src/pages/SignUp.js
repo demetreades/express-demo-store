@@ -75,19 +75,19 @@ const Register = () => {
 	return (
 		<>
 			<Container>
-				<Typography
-					className={classes.mt5}
-					variant="h3"
-					color="primary"
-					align="center">
-					Sign Up
-				</Typography>
 
 				<form noValidate autoComplete="off" onSubmit={handleSubmit}>
+					<Typography
+						className={classes.mt5Header}
+						variant="h4"
+						color="primary"
+						align="center">
+						Sign Up
+					</Typography>
 					<TextField
 						onChange={(e) => setUsername(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Username"
 						fullWidth
 						error={usernameError}
@@ -96,7 +96,7 @@ const Register = () => {
 					<TextField
 						onChange={(e) => setEmail(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Email"
 						fullWidth
 						error={emailError}
@@ -105,8 +105,9 @@ const Register = () => {
 					<TextField
 						onChange={(e) => setPassword(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Password"
+						type="password"
 						error={passwordError}
 						fullWidth
 						required
@@ -114,20 +115,27 @@ const Register = () => {
 					<TextField
 						onChange={(e) => setPasswordVerify(e.target.value)}
 						className={classes.field}
-						variant="outlined"
+						variant="filled"
 						label="Verify Password"
+						type="password"
 						error={passwordVerifyError}
 						fullWidth
 						required
 					/>
-					<Button variant="contained" onClick={() => history.push('/')}>
+					<Button
+						variant="contained"
+						color="primary"
+						size="large"
+						onClick={() => history.push('/')}
+					>
 						Back Home
 					</Button>
 					<Button
-						className={classes.ml5}
+						className={classes.ml10}
 						type="submit"
 						color="secondary"
 						variant="contained"
+						size="large"
 						startIcon={<SendIcon />}
 					>
 						Register

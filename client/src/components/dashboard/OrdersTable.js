@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import MaterialTable from 'material-table';
+import dayjs from 'dayjs';
+
 import { UserContext } from '../../context/UserContext';
-import axios from 'axios';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -24,7 +26,7 @@ const Table = ({ title }) => {
 			const {
 				data: { data: results },
 			} = await axios.get('http://localhost:5000/orders');
-			console.log(results);
+			console.log(results, 'ORDERS TABLE');
 			setData(results);
 			setLoading(false);
 		} catch (err) {
@@ -40,17 +42,40 @@ const Table = ({ title }) => {
 		{ title: 'Address', field: 'address' },
 		{ title: 'City', field: 'city' },
 		{ title: 'Postal Code', field: 'postalCode' },
-		// { title: 'Country', field: 'country' },
 		{
 			title: 'Total Price', field: 'totalPrice', editable: false, type: 'currency',
 			currencySetting: {
 				currencyCode: 'EUR',
 			}
 		},
-		{ title: 'Paid', field: 'isPaid', lookup: { true: 'yes', false: 'no' } },
-		{ title: 'Payment Date', field: 'paidAt' },
-		{ title: 'Delivered', field: 'isDelivered', lookup: { true: 'yes', false: 'no' } },
-		{ title: 'Delivery Date', field: 'deliveredAt' },
+		{
+			title: 'Paid',
+			field: 'isPaid',
+			lookup: { true: 'yes', false: 'no' }
+		},
+		{
+			title: 'Payment Date',
+			field: 'paidAt',
+			type: 'date',
+			render: (rowData) => rowData.paidAt ? dayjs(rowData.paidAt).format('HH:mm:ss DD/MM/YYYY') : 'not paid'
+		},
+		{
+			title: 'Delivered',
+			field: 'isDelivered',
+			lookup: { true: 'yes', false: 'no' }
+		},
+		{
+			title: 'Delivery Date',
+			field: 'deliveredAt',
+			type: 'date',
+			render: (rowData) => rowData.deliveredAt ? dayjs(rowData.deliveredAt).format('HH:mm:ss DD/MM/YYYY') : 'not delivered'
+		},
+		{
+			title: 'Created on',
+			field: 'createdAt',
+			type: 'date',
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
+		},
 
 		// {
 		//   title: 'Order items',
@@ -116,10 +141,11 @@ const Table = ({ title }) => {
 						}),
 				}}
 				options={{
+					grouping: true,
 					actionsColumnIndex: -1,
 					searchAutoFocus: true,
 					pageSizeOptions: [5, 10, 25, 50],
-					pageSize: 5,
+					pageSize: 10,
 					paginationType: 'stepped',
 					paginationPosition: 'both',
 					addRowPosition: 'first',

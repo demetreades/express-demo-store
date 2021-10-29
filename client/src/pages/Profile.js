@@ -1,18 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
-// import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-// import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 import { UserContext } from '../context/UserContext';
 import OrderCard from '../components/OrderCard';
 
+import useStyles from '../styles';
+
 const Profile = () => {
-	// const history = useHistory();
+	const classes = useStyles();
 
-	const { user, setUser } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 
-	// const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 	const [orders, setOrders] = useState([]);
 
 	const headers = {
@@ -22,7 +26,7 @@ const Profile = () => {
 
 
 	useEffect(() => {
-		// setLoading(false);
+		setLoading(false);
 		const fetchData = async () => {
 			try {
 				const {
@@ -30,50 +34,92 @@ const Profile = () => {
 				} = await axios.get(`http://localhost:5000/orders/user/${user._id}`, headers);
 				console.log(results);
 				setOrders(results);
-				// setLoading(true);
+				setLoading(true);
 			} catch (err) {
-				// setLoading(false);
+				setLoading(false);
 				console.log(err);
 			}
 		};
 		fetchData();
 	}, []);
 
-	// const handleLogOut = () => {
-	// 	console.log(
-	// 		`LOGOUT :: ${user.name} ======================== `,
-	// 		user
-	// 	);
-
-	// 	localStorage.removeItem('user');
-	// 	setUser({});
-	// 	history.push('/');
-	// };
-
 	return (
 		<>
-			<h1>User Profile</h1>
+			<Container maxWidth="md">
+				<div className={classes.cart}>
+					<Typography
+						variant="h4"
+						color="primary"
+					>
+						User Profile
+					</Typography>
+					<ul>
+						<li>
+							<Typography
+								variant="body2"
+								color="textSecondary"
+							>
+								id: {user._id}
+							</Typography>
+						</li>
+						<li>
+							<Typography
+								variant="body2"
+								color="textPrimary"
+							>
+								username: {user.name}
+							</Typography>
+						</li>
+						<li>
+							<Typography
+								variant="body2"
+								color="textPrimary"
+							>
+								email: {user.email}
+							</Typography>
+						</li>
+						<li>
+							<Typography
+								variant="body2"
+								color="secondary"
+							>
+								admin: {user.isAdmin ? 'yes' : 'no'}
+							</Typography>
+						</li>
+					</ul>
+				</div>
 
-			<br />
+				<Typography
+					variant="h4"
+					color="primary"
+				>
+					Orders:
+				</Typography>
 
-			<ul>
-				<li>ID: {user._id}</li>
-				<li>{user.name}</li>
-				<li>{user.email}</li>
-				<li>admin: {user.isAdmin ? 'yes' : 'no'}</li>
-				<li>
-					{/* <Button variant="contained" onClick={handleLogOut}>
-						Logout
-					</Button> */}
-				</li>
-				<ul>{orders && orders.length !== 0 ? (
-					orders.map((order, index) => {
-						return <OrderCard key={order._id} order={order} index={index} />
-					})
-				) : (
-					<p>no orders</p>
-				)}</ul>
-			</ul>
+				<Grid container
+					className={classes.grid}
+				>
+
+					{loading ? (
+						orders
+							.map((order, index) => (
+								<Grid
+									items
+									key={order._id}
+									xs={12}
+									sm={6}
+									md={4}
+									lg={4}
+								>
+									<OrderCard order={order} index={index} />
+								</Grid>
+							))
+					) : (
+						<CircularProgress color="secondary" className={classes.marginCenter} />
+					)}
+				</Grid>
+
+			</Container>
 		</>
 
 
