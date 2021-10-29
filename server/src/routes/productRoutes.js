@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { protect, admin } = require('../utils');
+const { protect, admin, upload } = require('../utils');
 const {
 	getProducts,
 	getProductById,
@@ -7,12 +7,17 @@ const {
 	createProduct,
 	removeProduct,
 	updateProduct,
+	imageUpload,
 } = require('../controllers/products');
 
 router
 	.route('/')
 	.get(getProducts)
 	.post(protect, admin, createProduct);
+
+router
+	.route('/upload/img/:id')
+	.post(protect, admin, upload.single('image'), imageUpload);
 
 router
 	.route('/slug/:slug')
