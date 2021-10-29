@@ -27,9 +27,9 @@
     "import/extensions": [".js", ".jsx"]
   },
   "rules": {
-		"init-declarations": 0,
-		"node/no-unpublished-require": 0,
-		"node/shebang": 0,
+    "init-declarations": 0,
+    "node/no-unpublished-require": 0,
+    "node/shebang": 0,
     "indent": 0,
     "linebreak-style": [2, "unix"],
     "quotes": [2, "single"],
@@ -62,7 +62,7 @@
     "max-len": [
       2,
       {
-        "code": 80,
+        "code": 100,
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
         "ignoreComments": true,
