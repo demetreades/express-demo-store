@@ -20,7 +20,7 @@ const productSchema = mongoose.Schema(
 		slug: String,
 		image: {
 			type: String,
-			default: '/placeholder-image.png',
+			default: '/img/products/placeholder-image.png',
 		},
 		brand: {
 			type: String,
