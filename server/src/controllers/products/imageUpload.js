@@ -2,12 +2,20 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { logger } = require('../../utils');
+const { logger, BaseError } = require('../../utils');
 const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
-module.exports = asyncHandler(async (req, res) => {
-	const { fileName, params: { id } } = req;
+module.exports = asyncHandler(async (req, res, next) => {
+	const { fileName, file, params: { id } } = req;
+
+	if (!fileName) {
+		return next(new BaseError('Filename not found', StatusCodes.NOT_FOUND));
+	}
+
+	if (!file) {
+		return next(new BaseError('Uploaded file not found', StatusCodes.NOT_FOUND));
+	}
 
 	await productService.getByProperty(Product, { _id: id });
 
@@ -17,7 +25,7 @@ module.exports = asyncHandler(async (req, res) => {
 
 	logger.info(`NEW IMAGE uploaded: ${fileName} for Product name: ${updatedProduct.name}, id: ${updatedProduct.id}'}`);
 
-	res.status(StatusCodes.CREATED).json({
+	res.status(StatusCodes.OK).json({
 		success: true,
 		data: updatedProduct,
 	});
