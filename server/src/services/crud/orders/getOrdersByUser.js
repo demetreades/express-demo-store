@@ -21,7 +21,7 @@ module.exports = async (id, sort = -1) => {
 		throw new BaseError('Orders not found', StatusCodes.NOT_FOUND);
 	}
 
-	logger.info(`GET ALL ORDERS, user: ${user.name}, email: ${user.email} COUNT: ${results.length}`);
+	logger.info(`GET ALL ORDERS, user: ${user.name}, email: ${user.email} COUNT: `);
 
 	return results;
 };
