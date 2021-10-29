@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 	ml5: {
 		margin: ' 0 5px',
 		textDecoration: 'none',
@@ -9,19 +9,20 @@ const useStyles = makeStyles((theme) => ({
 		margin: '0 10px',
 	},
 	mt5: {
-		marginTop: '25px',
+		marginTop: '85px',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	mt5Header: {
+		marginTop: '22px',
+	},
+	mt8: {
+		marginTop: '12px',
 	},
 	productCard: {
 		margin: '8px',
-		maxWidth: '300px',
-		height: '300px',
-	},
-	btn: {
-		fontSize: '42px',
-		backgroundColor: 'violet',
-		'&:hover': {
-			backgroundColor: 'blue',
-		},
+		height: '520px',
 	},
 	title: {
 		marginBottom: '20px',
@@ -32,30 +33,54 @@ const useStyles = makeStyles((theme) => ({
 		display: 'block',
 	},
 	main: {
-		marginBottom: '80px',
 		display: 'flex',
-		// minHeight: '85.9vh',
-		minHeight: '84vh',
+		minHeight: '85.8vh',
 		flexDirection: 'column',
 	},
 	footer: {
-		position: 'fixed',
-		width: '100%',
-		bottom: '0',
-	},
-	child: {
-		flexGrow: 1,
-		minHeight: 0,
-		overflow: 'scroll',
+		padding: '-100px',
+		marginBottom: '-10px'
 	},
 	orderCard: {
-		width: '25%',
-		margin: '12px auto',
+		margin: '8px',
+	},
+	orderTitle: {
+		height: '38px',
+	},
+	description: {
+		height: '80px'
+	},
+	cardTitle: {
+		height: '90px'
+	},
+	orderAddress: {
+		height: '65px'
+	},
+	orderPrice: {
+		height: '25px'
+	},
+	test: {
+		backgroundColor: 'azure',
 	},
 	cart: {
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		padding: '16px 0 8px 0'
+	},
+	marginCenter: {
+		margin: '0 auto',
+	},
+	fixedHeight: {
+		height: '75vh',
+		backgroundColor: 'purple',
+	},
+	logo: {
+		marginRight: '16px',
+		flex: '1'
+	},
+	grid: {
+		marginBottom: '44px',
 	}
 }));
 
