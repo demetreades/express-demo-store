@@ -4,6 +4,7 @@ const getProductBySlug = require('./getProductBySlug');
 const createProduct = require('./createProduct');
 const removeProduct = require('./removeProduct');
 const updateProduct = require('./updateProduct');
+const imageUpload = require('./imageUpload');
 
 module.exports = {
 	getProducts,
@@ -12,4 +13,5 @@ module.exports = {
 	createProduct,
 	removeProduct,
 	updateProduct,
+	imageUpload,
 };
