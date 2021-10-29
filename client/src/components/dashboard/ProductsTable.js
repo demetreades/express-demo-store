@@ -18,23 +18,45 @@ const Table = ({ title }) => {
 		Authorization: `Bearer ${user.token}`,
 	};
 
-
-
 	useEffect(() => {
 		getProducts();
 	}, []);
 
-	const handleUpload = async (rowData) => {
-		console.log('MPIKE HANDLEUPLOAD', rowData);
-		try {
-			const {
-				data: { data: results },
-			} = await axios.post(`http://localhost:5000/products/upload/img/${rowData._id}`, { headers });
-			console.log(results, 'PRODUCT UPLOAD RESULTS ');
-		} catch (err) {
-			console.log('UPLOAD ERROR: ', err);
-		}
+	//
+
+	const handleUpload = async (rowData, file) => {
+		const myHeaders = new Headers();
+		myHeaders.append("Authorization", `Bearer ${user.token}`);
+
+		const formdata = new FormData();
+		formdata.append("image", file, "sample-image.png");
+
+		const requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: formdata,
+			redirect: 'follow'
+		};
+
+		fetch(`http://localhost:5000/products/upload/img/${rowData._id}`, requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log('error', error));
 	}
+
+	// --------------------------
+
+	// const handleUpload = async (rowData, file) => {
+	// 	console.log('MPIKE HANDLEUPLOAD', rowData);
+	// 	try {
+	// 		const {
+	// 			data: { data: results },
+	// 		} = await axios.post(`http://localhost:5000/products/upload/img/${rowData._id}`, file, { 'Content-Type': 'multipart/form-data;boundary=5554443', Authorization: `Bearer ${user.token}` });
+	// 		console.log(results, 'PRODUCT UPLOAD RESULTS ');
+	// 	} catch (err) {
+	// 		console.log('UPLOAD ERROR: ', err);
+	// 	}
+	// }
 
 	const getProducts = async () => {
 		try {
@@ -68,7 +90,11 @@ const Table = ({ title }) => {
 					< input
 						type="file"
 						name="image"
-						onClick={() => handleUpload(rowData)}
+						onChange={e => {
+							const file = e.target.files[0];
+							console.log(file, 'onChange FILE \n\n');
+							handleUpload(rowData, file);
+						}}
 						hidden
 					/>
 				</Button >
