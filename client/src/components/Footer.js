@@ -8,7 +8,7 @@ const Footer = () => {
 	const classes = useStyles();
 
 	return (
-		<footer className={classes.footer}>
+		<footer>
 			<AppBar position="static" color="primary">
 				<Container maxWidth="md">
 					<Toolbar>
