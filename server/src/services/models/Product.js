@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const handleSlugs = require('./utils/handleSlugs');
+const slugify = require('slugify');
 
 const productSchema = mongoose.Schema(
 	{
@@ -44,10 +44,6 @@ const productSchema = mongoose.Schema(
 			min: [0, 'Only positive values allowed'],
 			default: 0,
 		},
-		isDigital: {
-			type: Boolean,
-			default: false,
-		},
 		isActive: {
 			type: Boolean,
 			default: true,
@@ -58,6 +54,10 @@ const productSchema = mongoose.Schema(
 	}
 );
 
-handleSlugs(productSchema);
+productSchema.pre('save', function (next) {
+	this.slug = slugify(this.name, { lower: true });
+	next();
+});
+
 
 module.exports = mongoose.model('Product', productSchema);
