@@ -50,18 +50,20 @@ const Cart = () => {
 				total price: {totalPrice}€
 			</Typography>
 			{user && user.login ? (
-				<Link to='/order'>
-					<Button
-						className={classes.ml5}
-						type="submit"
-						color="secondary"
-						variant="contained"
-						disabled={totalPrice === 0 ? true : false}
-						startIcon={<SendIcon />}
-					>
-						Order now
-					</Button>
-				</Link>
+				<Button
+					className={classes.ml5}
+					type="submit"
+					color="secondary"
+					variant="contained"
+					disabled={totalPrice === 0 ? true : false}
+					startIcon={<SendIcon />}
+				>
+					{user && user.login ? (
+						<Link to='/order'>
+							Order now
+						</Link>
+					) : ''}
+				</Button>
 			) : (
 				<Link to='/login'>
 					<Button
