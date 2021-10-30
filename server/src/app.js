@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -16,8 +15,6 @@ dbConnection();
 
 const app = express();
 
-app.use(morgan('dev'));
-
 app.use(helmet());
 app.use(rateLimit(limitOptions));
 app.use(cors(corsOptions));
@@ -31,7 +28,6 @@ app.use('/orders', orderRoutes);
 app.use('/products', productRoutes);
 
 app.use(handleNotFound);
-app.use(handleMulterErrors);
 app.use(handleMongoErrors);
 app.use(handleErrors);
 
