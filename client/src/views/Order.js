@@ -72,7 +72,7 @@ const Order = () => {
 				localStorage.setItem('cart', []);
 				setCart([]);
 				setCount(0);
-				console.log(localStorage.getItem('cart'), 'cart after ordering');
+				console.log(cart, 'cart at checkout');
 				history.push('/')
 
 			} catch (err) {
@@ -159,7 +159,7 @@ const Order = () => {
 						variant="contained"
 						startIcon={<SendIcon />}
 					>
-						Order now
+						Checkout
 					</Button>
 				</form>
 			</Container>

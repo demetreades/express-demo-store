@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,14 +8,11 @@ import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';
 
-import { UserContext } from '../context/UserContext';
 import useStyles from '../styles';
 
 const Register = () => {
 	const classes = useStyles();
 	const history = useHistory();
-
-	const { setUser } = useContext(UserContext);
 
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
@@ -55,17 +52,7 @@ const Register = () => {
 						email,
 						password,
 					})
-					.then((user) => {
-						user.login = true;
-						localStorage.setItem(
-							'user',
-							JSON.stringify({
-								user,
-							})
-						);
-						setUser(user);
-						history.push('/login');
-					});
+				history.push('/login');
 			} catch (err) {
 				console.log('POST ERROR: ', err);
 			}

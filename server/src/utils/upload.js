@@ -1,5 +1,7 @@
 const path = require('path');
 const multer = require('multer');
+const { StatusCodes } = require('http-status-codes');
+const BaseError = require('./errors/BaseError');
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -13,4 +15,23 @@ const storage = multer.diskStorage({
 	}
 });
 
-module.exports = multer({ storage });
+const checkFileType = (file, cb) => {
+	const filetypes = /jpg|jpeg|png/;
+	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+	const mimetype = filetypes.test(file.mimetype);
+
+	if (extname && mimetype) {
+		return cb(null, true);
+	} else {
+		cb(new BaseError('Only image files accepted', StatusCodes.FORBIDDEN));
+	}
+};
+
+module.exports = multer({
+	storage,
+	fileFilter: (req, file, cb) => {
+		checkFileType(file, cb);
+	},
+});
+
+

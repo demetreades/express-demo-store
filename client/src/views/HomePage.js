@@ -6,7 +6,6 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import ProductCard from '../components/ProductCard';
-import Cart from '../components/Cart';
 
 import useStyles from '../styles';
 
@@ -37,9 +36,8 @@ const HomePage = () => {
 	return (
 		<>
 			<Container maxWidth="md">
-				<Cart />
 				<Grid container
-					className={classes.grid}
+					className={classes.homeGrid}
 				>
 					{loading ? (
 						products

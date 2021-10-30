@@ -16,7 +16,7 @@ const Dashboard = () => {
 					<Route
 						path="/dashboard/products"
 						render={(props) => (
-							<ProductsTable
+							< ProductsTable
 								{...props}
 								title={'Products List'}
 							/>
