@@ -66,7 +66,15 @@ const useStyles = makeStyles(() => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: '16px 0 8px 0'
+		padding: '16px 0 8px 0',
+		marginRight: '16px',
+		flex: '1',
+	},
+	mtb8: {
+		margin: '8px 0',
+	},
+	mtb16: {
+		margin: '16px 0',
 	},
 	marginCenter: {
 		margin: '0 auto',
@@ -75,12 +83,19 @@ const useStyles = makeStyles(() => ({
 		height: '75vh',
 		backgroundColor: 'purple',
 	},
-	logo: {
+	flexNav: {
 		marginRight: '16px',
 		flex: '1'
 	},
-	grid: {
-		marginBottom: '44px',
+	homeGrid: {
+		margin: '24px 0',
+	},
+	ordersGrid: {
+		marginBottom: '24px',
+	},
+	missing: {
+		display: 'flex',
+		flexDirection: 'row'
 	}
 }));
 

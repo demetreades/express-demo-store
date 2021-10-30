@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* dotted background */
+  background-image: radial-gradient(#444df7f5 1px, #7c7b888e 1px);
+  background-size: 28px 28px;
 }
 
 code {
@@ -32,7 +35,7 @@ form {
 }
 
 main {
-  background-color: rgba(62, 69, 136, 0.349);
+  /* background-color: rgba(62, 69, 136, 0.349); */
 }
 
 table thead {
@@ -40,6 +43,6 @@ table thead {
   font-weight: bold;
 }
 
-table tbody tr:nth-child(even) {
+table tbody tr:nth-child(odd) {
   background-color: #ededed;
 }
