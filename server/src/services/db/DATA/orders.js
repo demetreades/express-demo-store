@@ -12,7 +12,7 @@ exports.orders = [
 				product: '6179066659a97328d4471d48',
 			},
 		],
-		totalPrice: 0,
+		totalPrice: 55.99,
 		isPaid: false,
 		isDelivered: false,
 	},

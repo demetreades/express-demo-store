@@ -13,7 +13,7 @@ exports.users = [
 		password: bcrypt.hashSync('12345678', 10),
 	},
 	{
-		name: 'standarduser',
+		name: 'user1user',
 		email: 'user1@email.com',
 		password: bcrypt.hashSync('12121278', 10),
 	},
