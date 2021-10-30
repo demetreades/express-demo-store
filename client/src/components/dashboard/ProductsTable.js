@@ -54,10 +54,21 @@ const Table = ({ title }) => {
 			title: 'Name',
 			field: 'name',
 		},
-		{ title: 'User ID', field: 'user', editable: false },
-		{ title: 'Image', field: 'image' },
 		{
-			title: 'Upload Image', field: 'upload', editable: false, render: (rowData) =>
+			title: 'User ID',
+			field: 'user',
+			editable: false,
+		},
+		{
+			title: 'Image',
+			field: 'image',
+			editable: false,
+		},
+		{
+			title: 'Upload Image',
+			field: 'upload',
+			editable: false,
+			render: (rowData) =>
 			(
 				<Button
 					variant="contained"
