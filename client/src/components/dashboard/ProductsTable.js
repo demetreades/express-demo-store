@@ -80,7 +80,6 @@ const Table = ({ title }) => {
 						name="image"
 						onChange={e => {
 							const file = e.target.files[0];
-							console.log(file, 'onChange FILE \n\n');
 							handleUpload(rowData, file);
 						}}
 						hidden
