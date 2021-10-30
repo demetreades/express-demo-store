@@ -19,6 +19,7 @@ const orderSchema = mongoose.Schema(
 		},
 		orderItems: [
 			{
+				price: { type: Number, required: true },
 				product: {
 					type: mongoose.Schema.Types.ObjectId,
 					required: true,
@@ -65,17 +66,20 @@ const orderSchema = mongoose.Schema(
 	}
 );
 
-// orderSchema.pre('save', function (next) {
-// 	if (this.isDelivered === false) {
-// 		this.deliveredAt = new Date();
-// 		next();
-// 	}
-// 	next();
-// });
+orderSchema.pre('save', function (next) {
+	if (!this.isModified('isDelivered')) {
+		next();
+	}
+	this.deliveredAt = new Date();
+	next();
+});
 
-// orderSchema.pre('save', function (next) {
-// 	this.paidAt = new Date();
-// 	next();
-// });
+orderSchema.pre('save', function (next) {
+	if (!this.isModified('isPaid')) {
+		next();
+	}
+	this.paidAt = new Date();
+	next();
+});
 
 module.exports = mongoose.model('Order', orderSchema);
