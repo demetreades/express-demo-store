@@ -1,11 +1,16 @@
 {
   "name": "express-demo-store",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "express restful api , crud operations",
   "keywords": [
     "express",
     "crud",
-    "rest-api"
+    "rest-api",
+    "authentication",
+    "postman",
+    "jwt",
+    "react",
+    "mongoose"
   ],
   "homepage": "https://github.com/demetreades/express-demo-store#readme",
   "bugs": {
