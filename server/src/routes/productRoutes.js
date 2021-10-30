@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { protect, admin, upload } = require('../utils');
+const { protect, admin } = require('../utils');
+const { upload } = require('../config');
 const {
 	getProducts,
 	getProductById,
