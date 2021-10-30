@@ -95,19 +95,6 @@ const Table = ({ title }) => {
 				columns={orders}
 				isLoading={loading}
 				editable={{
-					// ADD ORDER
-					onRowAdd: (newData) =>
-						new Promise((resolve, reject) => {
-							fetch(`http://localhost:5000/orders/`, {
-								method: 'POST',
-								headers,
-								body: JSON.stringify({ user: user._id, ...newData }),
-							})
-								.then((resp) => resp.json())
-								.then((resp) => getOrders());
-							resolve();
-						}),
-
 					// DELETE ORDER
 					onRowDelete: (oldData) =>
 						new Promise((resolve, reject) => {
