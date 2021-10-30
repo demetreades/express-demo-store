@@ -7,7 +7,7 @@ const userService = require('../../services/crud');
 const { User } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { id } = req.params;
+	const { params: { id } } = req;
 
 	const user = await userService.remove(User, id);
 

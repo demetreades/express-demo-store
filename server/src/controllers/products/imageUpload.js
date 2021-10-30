@@ -9,12 +9,8 @@ const { Product } = require('../../services/models');
 module.exports = asyncHandler(async (req, res, next) => {
 	const { fileName, file, params: { id } } = req;
 
-	if (!fileName) {
-		return next(new BaseError('Filename not found', StatusCodes.NOT_FOUND));
-	}
-
-	if (!file) {
-		return next(new BaseError('Uploaded file not found', StatusCodes.NOT_FOUND));
+	if (!fileName || !file) {
+		return next(new BaseError('Upload error file or filename not found', StatusCodes.NOT_FOUND));
 	}
 
 	await productService.getByProperty(Product, { _id: id });

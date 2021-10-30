@@ -11,9 +11,8 @@ const {
 
 router
 	.route('/')
-	.get(getOrders)
-	.post(createOrder)
-	.get(protect, admin, getOrders);
+	.get(protect, admin, getOrders)
+	.post(createOrder);
 
 router
 	.route('/:id')
@@ -23,6 +22,6 @@ router
 
 router
 	.route('/user/:id')
-	.get(getOrdersByUser);
+	.get(protect, getOrdersByUser);
 
 module.exports = router;

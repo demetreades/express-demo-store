@@ -2,11 +2,11 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 const { logger } = require('../../utils');
 const userService = require('../../services/crud');
 const { User } = require('../../services/models');
 
-const bcrypt = require('bcryptjs');
 
 module.exports = asyncHandler(async (req, res, next) => {
 	const { body, params: { id } } = req;

@@ -8,7 +8,7 @@ exports.orders = [
 		user: '61752fbeee41080e7f4a60cd',
 		orderItems: [
 			{
-				quantity: 1,
+				price: 55.99,
 				product: '6179066659a97328d4471d48',
 			},
 		],
@@ -25,15 +25,15 @@ exports.orders = [
 		user: '617863afbe170b6269cb86cf',
 		orderItems: [
 			{
-				quantity: 2,
+				price: 155.99,
 				product: '6179066659a97328d4471d48',
 			},
 			{
-				quantity: 11,
+				price: 9.99,
 				product: '6179066659a97328d4471d47',
 			},
 		],
-		totalPrice: 0,
+		totalPrice: 221.97,
 		isPaid: false,
 		isDelivered: false,
 	},

@@ -7,9 +7,9 @@ const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { id } = req.params;
+	const { params: { id } } = req;
 
-	const product = await productService.getByProperty(Product, {_id: id});
+	const product = await productService.getByProperty(Product, { _id: id });
 
 	logger.info(
 		`GET PRODUCT name: ${product.name}, id: ${product._id}`

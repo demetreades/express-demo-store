@@ -65,7 +65,7 @@ const Order = () => {
 						address,
 						city,
 						postalCode,
-						products: cart,
+						orderItems: cart,
 						totalPrice
 					});
 

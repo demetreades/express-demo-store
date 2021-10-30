@@ -6,7 +6,6 @@ const getByProperty = require('./getByProperty');
 
 const register = require('./users/register');
 const authenticate = require('./users/authenticate');
-
 const getOrdersByUser = require('./orders/getOrdersByUser');
 
 module.exports = {
@@ -20,6 +19,6 @@ module.exports = {
 		authenticate,
 	},
 	orders: {
-		getOrdersByUser
-	}
+		getOrdersByUser,
+	},
 };

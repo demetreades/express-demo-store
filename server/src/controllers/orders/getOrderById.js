@@ -6,11 +6,10 @@ const { logger } = require('../../utils');
 const orderService = require('../../services/crud');
 const { Order } = require('../../services/models');
 
-
 module.exports = asyncHandler(async (req, res) => {
 	const { params: { id } } = req;
 
-	const order = await orderService.getByProperty(Order, {_id: id});
+	const order = await orderService.getByProperty(Order, { _id: id });
 
 	logger.info(`GET ORDER id: ${order._id}`);
 

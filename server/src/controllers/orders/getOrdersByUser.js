@@ -5,7 +5,6 @@ const asyncHandler = require('express-async-handler');
 const { logger } = require('../../utils');
 const { orders: orderService } = require('../../services/crud');
 
-
 module.exports = asyncHandler(async (req, res) => {
 	const { params: { id } } = req;
 
