@@ -38,13 +38,13 @@ Run server and client separately
 
 ##### Login credenticals
 
-for admin
+admin
 
-    email: `admin@user.com` , password: `12345678`
+    email: admin@user.com , password: 12345678
 
-for standard user
+user
 
-     email: `user1@email.com` , password: `12345678`
+     email: user1@email.com , password: 12345678
 
 <br>
 
