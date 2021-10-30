@@ -34,12 +34,8 @@ const useStyles = makeStyles(() => ({
 	},
 	main: {
 		display: 'flex',
-		minHeight: '85.8vh',
+		minHeight: '86.4vh',
 		flexDirection: 'column',
-	},
-	footer: {
-		padding: '-100px',
-		marginBottom: '-10px'
 	},
 	orderCard: {
 		margin: '8px',
