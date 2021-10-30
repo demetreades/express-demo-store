@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import MaterialTable from 'material-table';
+import { Button } from '@material-ui/core';
 
 import { UserContext } from '../../context/UserContext';
-import { Button } from '@material-ui/core';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -32,7 +32,7 @@ const Table = ({ title }) => {
 		fetch(`http://localhost:5000/products/upload/img/${rowData._id}`, requestOptions)
 			.then(response => response.text())
 			.then(result => console.log(result, 'image upload results'))
-			.catch(error => console.log('PRODUCT-TABLE UPLOAD ERROR: ', error));
+			.catch(err => console.log('PRODUCT-TABLE UPLOAD ERROR: ', err));
 	}
 
 	const getProducts = async () => {
