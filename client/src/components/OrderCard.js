@@ -2,7 +2,6 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import { CardActionArea } from '@material-ui/core';
 
 import useStyles from '../styles';
 
@@ -21,28 +20,26 @@ const OrderCard = ({ order, index }) => {
 				}
 				subheader={`id: ${order._id}`}
 			/>
-			<CardActionArea >
-				<CardContent>
-					<Typography
-						variant="body2"
-						className={classes.orderAddress}
-					>
-						Shipping Address: <br />{`${order.address}, ${order.city} : ${order.postalCode}`}
-					</Typography>
-					<Typography
-						variant="body2"
-						className={classes.orderPrice}
-					>
-						Total Price: {`${order.totalPrice}€`}
-					</Typography>
-					<Typography variant="body2" color={'secondary'}>
-						Is Delivered: {order.isDelivered ? 'delivered' : 'not delivered'}
-					</Typography>
-					<Typography variant="body2" color={'textSecondary'}>
-						Is Paid: {order.isPaid ? 'payed' : 'not paid'}
-					</Typography>
-				</CardContent>
-			</CardActionArea>
+			<CardContent>
+				<Typography
+					variant="body2"
+					className={classes.orderAddress}
+				>
+					Shipping Address: <br />{`${order.address}, ${order.city} : ${order.postalCode}`}
+				</Typography>
+				<Typography
+					variant="body2"
+					className={classes.orderPrice}
+				>
+					Total Price: {`${order.totalPrice}€`}
+				</Typography>
+				<Typography variant="body2" color={'secondary'}>
+					Is Delivered: {order.isDelivered ? 'delivered' : 'not delivered'}
+				</Typography>
+				<Typography variant="body2" color={'textSecondary'}>
+					Is Paid: {order.isPaid ? 'payed' : 'not paid'}
+				</Typography>
+			</CardContent>
 		</Card>
 	);
 };
