@@ -58,11 +58,11 @@ const Cart = () => {
 					disabled={totalPrice === 0 ? true : false}
 					startIcon={<SendIcon />}
 				>
-					{user && user.login ? (
+					{user && user.login && cart.length !== 0 ? (
 						<Link to='/order'>
 							Order now
 						</Link>
-					) : ''}
+					) : 'Order now'}
 				</Button>
 			) : (
 				<Link to='/login'>
