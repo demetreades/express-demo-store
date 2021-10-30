@@ -3,14 +3,14 @@ import { UserContext } from './context/UserContext'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import SignUp from './pages/SignUp';
-import Dashboard from './pages/Dashboard';
-import Order from './pages/Order';
+import HomePage from './views/HomePage';
+import Login from './views/Login';
+import Profile from './views/Profile';
+import SignUp from './views/SignUp';
+import Dashboard from './views/Dashboard';
+import Order from './views/Order';
+import Missing404 from './views/Missing404';
 import ProtectedRoute from './utils/ProtectedRoute';
-import Missing404 from './pages/Missing404';
 
 import { useContext } from 'react'
 
