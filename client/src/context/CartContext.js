@@ -13,11 +13,9 @@ export const CartProvider = ({ children }) => {
 			try {
 				const { fetchedCart } = localStorage.getItem('cart');
 				if (fetchedCart === null) {
-					// console.log('\nNo existing cart from Local');
 					return;
 				} else {
 					const { cart } = JSON.parse(localStorage.getItem('cart'));
-					// console.log('\nCart context from Local:', cart);
 					setLocalCart(cart);
 					setCount(cart.length);
 				}

@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 
 import { CartContext } from '../context/CartContext';
 import { UserContext } from '../context/UserContext';
-
 import useStyles from '../styles';
 
 const Cart = () => {
@@ -23,20 +22,20 @@ const Cart = () => {
 		setCount(0);
 	}
 
-	const priceSum = cart.reduce((accumulator, product) => {
-		return accumulator + product.price;
-	}, 0);
+	const priceSum = cart.reduce((accumulator, product) => accumulator + product.price, 0);
 
 	const fixedTotalPrice = parseFloat(priceSum.toFixed(2));
 	setTotalPrice(fixedTotalPrice);
 
 	return (
-		<section className={classes.cart}>
+		<div
+			className={classes.cart}
+		>
 			<Typography
-				variant="h5"
+				variant="h6"
 				className={classes.ml10}
 			>
-				Cart
+				{user.login ? `${user.name.toUpperCase()}'s CART` : 'CART	'}
 			</Typography>
 			<Typography
 				className={classes.ml5}
@@ -51,39 +50,39 @@ const Cart = () => {
 				total price: {totalPrice}€
 			</Typography>
 			{user && user.login ? (
-				<Button
-					className={classes.ml5}
-					type="submit"
-					color="secondary"
-					variant="contained"
-					disabled={totalPrice === 0 ? true : false}
-					startIcon={<SendIcon />}
-				>
-					<Link to='/order'>
+				<Link to='/order'>
+					<Button
+						className={classes.ml5}
+						type="submit"
+						color="secondary"
+						variant="contained"
+						disabled={totalPrice === 0 ? true : false}
+						startIcon={<SendIcon />}
+					>
 						Order now
-					</Link>
-				</Button>
+					</Button>
+				</Link>
 			) : (
-				<Button
-					className={classes.ml5}
-					type="submit"
-					color="secondary"
-					variant="contained"
-				>
-					<Link to='/login'>
+				<Link to='/login'>
+					<Button
+						className={classes.ml5}
+						type="submit"
+						color="secondary"
+						variant="contained"
+					>
 						LOGIN TO ORDER
-					</Link>
-				</Button>
+					</Button>
+				</Link>
 			)}
 			<Button
 				className={classes.ml5}
-				color="primary"
+				color="default"
 				type="submit"
 				variant="contained"
 				onClick={handleEmptyCart}>
 				EMPTY CART
 			</Button>
-		</section>
+		</div>
 	)
 }
 

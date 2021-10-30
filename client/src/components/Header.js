@@ -5,6 +5,8 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import { Accessibility } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
 
+import Cart from '../components/Cart';
+
 import { UserContext } from '../context/UserContext';
 import useStyles from '../styles';
 
@@ -37,6 +39,7 @@ const Header = () => {
 						<Accessibility className={classes.icon} />
 						DEMOSTORE
 					</Link>
+					<Cart />
 					{user && user.isAdmin ? (
 						<>
 							<Link className={classes.ml5} to="/dashboard/products">Products</Link>

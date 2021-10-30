@@ -1,8 +1,8 @@
+import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import { CardActionArea } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { CardActionArea } from '@material-ui/core';
 
 import useStyles from '../styles';
 

@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-
-import MaterialTable from 'material-table';
 import dayjs from 'dayjs';
+import MaterialTable from 'material-table';
 
 import { UserContext } from '../../context/UserContext';
 
@@ -19,13 +18,14 @@ const Table = ({ title }) => {
 
 	useEffect(() => {
 		getOrders();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const getOrders = async () => {
 		try {
 			const {
 				data: { data: results },
-			} = await axios.get('http://localhost:5000/orders');
+			} = await axios.get('http://localhost:5000/orders', { headers: { Authorization: `Bearer ${user.token}` } });
 			console.log(results, 'ORDERS TABLE');
 			setData(results);
 			setLoading(false);
@@ -49,6 +49,14 @@ const Table = ({ title }) => {
 			}
 		},
 		{
+			title: 'Order items',
+			field: 'orderItems',
+			editable: false,
+			render: (rowData) => {
+				return rowData.orderItems ? rowData.orderItems.length : 'no items'
+			}
+		},
+		{
 			title: 'Paid',
 			field: 'isPaid',
 			lookup: { true: 'yes', false: 'no' }
@@ -57,7 +65,7 @@ const Table = ({ title }) => {
 			title: 'Payment Date',
 			field: 'paidAt',
 			type: 'date',
-			render: (rowData) => rowData.paidAt ? dayjs(rowData.paidAt).format('HH:mm:ss DD/MM/YYYY') : 'not paid'
+			render: (rowData) => rowData.paidAt ? dayjs(rowData.paidAt).format('HH:mm:ss DD/MM/YYYY') : 'not paid',
 		},
 		{
 			title: 'Delivered',
@@ -68,21 +76,15 @@ const Table = ({ title }) => {
 			title: 'Delivery Date',
 			field: 'deliveredAt',
 			type: 'date',
-			render: (rowData) => rowData.deliveredAt ? dayjs(rowData.deliveredAt).format('HH:mm:ss DD/MM/YYYY') : 'not delivered'
+			render: (rowData) => rowData.deliveredAt ? dayjs(rowData.deliveredAt).format('HH:mm:ss DD/MM/YYYY') : 'not delivered',
 		},
 		{
 			title: 'Created on',
 			field: 'createdAt',
+			editable: false,
 			type: 'date',
-			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY'),
 		},
-
-		// {
-		//   title: 'Order items',
-		//   field: 'orderItems',
-		//   render: (rowData) =>
-		//     rowData.orderItems ? rowData.orderItems.join() : 'mpikan!',
-		// },
 	];
 
 	return (

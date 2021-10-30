@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-
-import MaterialTable from 'material-table';
 import dayjs from 'dayjs';
+import MaterialTable from 'material-table';
 
 import { UserContext } from '../../context/UserContext';
 import { Button } from '@material-ui/core';
@@ -13,50 +12,28 @@ const Table = ({ title }) => {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	const headers = {
-		'Content-type': 'application/json',
-		Authorization: `Bearer ${user.token}`,
-	};
-
 	useEffect(() => {
 		getProducts();
 	}, []);
 
-	//
-
 	const handleUpload = async (rowData, file) => {
-		const myHeaders = new Headers();
-		myHeaders.append("Authorization", `Bearer ${user.token}`);
+		const tokenHeaders = { 'Authorization': `Bearer ${user.token}` };
 
-		const formdata = new FormData();
-		formdata.append("image", file, "sample-image.png");
+		const data = new FormData();
+		data.append('image', file);
 
 		const requestOptions = {
 			method: 'POST',
-			headers: myHeaders,
-			body: formdata,
+			headers: tokenHeaders,
+			body: data,
 			redirect: 'follow'
 		};
 
 		fetch(`http://localhost:5000/products/upload/img/${rowData._id}`, requestOptions)
 			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log('error', error));
+			.then(result => console.log(result, 'image upload results'))
+			.catch(error => console.log('PRODUCT-TABLE UPLOAD ERROR: ', error));
 	}
-
-	// --------------------------
-
-	// const handleUpload = async (rowData, file) => {
-	// 	console.log('MPIKE HANDLEUPLOAD', rowData);
-	// 	try {
-	// 		const {
-	// 			data: { data: results },
-	// 		} = await axios.post(`http://localhost:5000/products/upload/img/${rowData._id}`, file, { 'Content-Type': 'multipart/form-data;boundary=5554443', Authorization: `Bearer ${user.token}` });
-	// 		console.log(results, 'PRODUCT UPLOAD RESULTS ');
-	// 	} catch (err) {
-	// 		console.log('UPLOAD ERROR: ', err);
-	// 	}
-	// }
 
 	const getProducts = async () => {
 		try {
@@ -82,12 +59,12 @@ const Table = ({ title }) => {
 		{
 			title: 'Upload Image', field: 'upload', editable: false, render: (rowData) =>
 			(
-				< Button
+				<Button
 					variant="contained"
 					component="label"
 				>
 					Upload
-					< input
+					<input
 						type="file"
 						name="image"
 						onChange={e => {
@@ -121,11 +98,6 @@ const Table = ({ title }) => {
 		},
 		{ title: 'Stock', field: 'inStock', type: 'numeric' },
 		{
-			title: 'Digital',
-			field: 'isDigital',
-			lookup: { true: 'yes', false: 'no' },
-		},
-		{
 			title: 'Visibility',
 			field: 'isActive',
 			lookup: { true: 'yes', false: 'no' },
@@ -135,9 +107,14 @@ const Table = ({ title }) => {
 			field: 'createdAt',
 			type: 'date',
 			editable: false,
-			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY'),
 		},
 	];
+
+	const headers = {
+		'Content-type': 'application/json',
+		Authorization: `Bearer ${user.token}`,
+	};
 
 	return (
 		<>
@@ -150,7 +127,7 @@ const Table = ({ title }) => {
 					// ADD PRODUCT
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
-							fetch(`http://localhost:5000/products/`, {
+							fetch(`http://localhost:5000/products`, {
 								method: 'POST',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),

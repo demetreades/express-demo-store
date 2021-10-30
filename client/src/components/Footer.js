@@ -16,7 +16,7 @@ const Footer = () => {
 							{/* <Link to="/home"> */}
 							<Typography
 								className={classes.ml10}
-								variant="body"
+								variant="body1"
 								align="center"
 								gutterBottom
 							>

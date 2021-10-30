@@ -20,19 +20,13 @@ const Profile = () => {
 	const [loading, setLoading] = useState(true);
 	const [orders, setOrders] = useState([]);
 
-	const headers = {
-		'Content-type': 'application/json',
-		Authorization: `Bearer ${user.token}`,
-	};
-
-
 	useEffect(() => {
 		setLoading(false);
 		const fetchData = async () => {
 			try {
 				const {
 					data: { data: results },
-				} = await axios.get(`http://localhost:5000/orders/user/${user._id}`, headers);
+				} = await axios.get(`http://localhost:5000/orders/user/${user._id}`, { headers: { Authorization: `Bearer ${user.token}` } });
 				console.log(results, 'Profile results');
 				setOrders(results);
 				setLoading(true);
@@ -102,17 +96,25 @@ const Profile = () => {
 					className={classes.mtb8}
 				>
 					<Toolbar>
-						<Typography
+						{orders.length === 0 ? (
+							<span><Typography
+								variant="body1"
+								color="initial"
+							>
+								You haven't made any orders yet.
+							</Typography></span>
+						) : (<Typography
 							variant="h5"
 							color="initial"
 						>
 							Orders:
 						</Typography>
+						)}
 					</Toolbar>
 				</AppBar>
 
 				<Grid container
-					className={classes.grid}
+					className={classes.ordersGrid}
 				>
 
 					{loading ? (

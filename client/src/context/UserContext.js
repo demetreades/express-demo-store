@@ -10,11 +10,9 @@ export const UserProvider = ({ children }) => {
 		const getLocalUser = () => {
 			try {
 				if (!JSON.parse(localStorage.getItem('user'))) {
-					// console.log('No existing user from local');
 					return;
 				} else {
 					const { user: { data: { data } } } = JSON.parse(localStorage.getItem('user'));
-					// console.log('\nUser context from Local:', data);
 					setLocalUser(data);
 				}
 			} catch (err) {

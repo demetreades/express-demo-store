@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-
-import MaterialTable from 'material-table';
 import dayjs from 'dayjs';
+import MaterialTable from 'material-table';
 
 import { UserContext } from '../../context/UserContext';
 
@@ -19,13 +18,14 @@ const Table = ({ title }) => {
 
 	useEffect(() => {
 		getUsers();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const getUsers = async () => {
 		try {
 			const {
 				data: { data: results },
-			} = await axios.get('http://localhost:5000/users');
+			} = await axios.get('http://localhost:5000/users', { headers: { Authorization: `Bearer ${user.token}` } });
 			console.log(results, 'USERS TABLE');
 			setData(results);
 			setLoading(false);
@@ -44,7 +44,8 @@ const Table = ({ title }) => {
 			title: 'Created on',
 			field: 'createdAt',
 			type: 'date',
-			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY')
+			editable: false,
+			render: (rowData) => dayjs(rowData.createdAt).format('HH:mm:ss DD/MM/YYYY'),
 		},
 	];
 
@@ -56,20 +57,6 @@ const Table = ({ title }) => {
 				columns={userColumns}
 				isLoading={loading}
 				editable={{
-					// ADD USER
-					onRowAdd: (newData) =>
-						new Promise((resolve, reject) => {
-							console.log(newData, `:: new user: ${newData.name} from table`);
-							fetch(`http://localhost:5000/users/`, {
-								method: 'POST',
-								headers,
-								body: JSON.stringify({ user: user._id, ...newData }),
-							})
-								.then((resp) => resp.json())
-								.then((resp) => getUsers());
-							resolve();
-						}),
-
 					// DELETE USER
 					onRowDelete: (oldData) =>
 						new Promise((resolve, reject) => {

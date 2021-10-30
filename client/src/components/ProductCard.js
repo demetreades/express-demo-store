@@ -5,7 +5,6 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { CardMedia, CardActionArea, IconButton } from '@material-ui/core';
-
 import AddIcon from '@material-ui/icons/Add';
 
 import { CartContext } from '../context/CartContext';
@@ -18,7 +17,7 @@ const ProductCard = ({ product }) => {
 
 	const handleAddToCart = () => {
 		console.log(`CART: items: ${cart.length + 1} :: Product: ${product.name}, ${product._id} added`);
-		cart.push(product);
+		cart.push({ product: product._id, price: product.price });
 		setCart(cart);
 		setCount(cart.length);
 
@@ -28,9 +27,8 @@ const ProductCard = ({ product }) => {
 				cart,
 			})
 		);
+		console.log(cart, 'CART');
 	};
-
-
 
 	return (
 		<Card className={classes.productCard}>
@@ -43,6 +41,7 @@ const ProductCard = ({ product }) => {
 			/>
 			<CardHeader
 				className={classes.cardTitle}
+				onClick={handleAddToCart}
 				action={
 					<IconButton
 						disabled={product.inStock === 0 ? true : false}
@@ -50,7 +49,6 @@ const ProductCard = ({ product }) => {
 						<AddIcon
 							variant="body2"
 							color="secondary"
-							onClick={handleAddToCart}
 						/>
 					</IconButton>
 				}
@@ -63,7 +61,7 @@ const ProductCard = ({ product }) => {
 			/>
 			<CardActionArea>
 				<CardContent
-					action={handleAddToCart}
+					onClick={handleAddToCart}
 				>
 					<Typography
 						variant="body2"
