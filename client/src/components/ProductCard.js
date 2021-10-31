@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
 
 	const handleAddToCart = () => {
 		console.log(`CART: items: ${cart.length + 1} :: Product: ${product.name}, ${product._id} added`);
-		cart.push({ product: product._id, price: product.price });
+		cart.push({ product: product._id, price: product.price }); // quantity: 1
 		setCart(cart);
 		setCount(cart.length);
 
@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
 		<Card className={classes.productCard}>
 			<CardMedia
 				component="img"
-				image={product.image}
+				image={product.image ?? '/img/products/placeholder-image.png'}
 				alt="Product image"
 				height="220"
 				title="Product image"
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
 			/>
 			<CardActionArea>
 				<CardContent
-					onClick={handleAddToCart}
+					onClick={product.inStock !== 0 ? handleAddToCart : null}
 				>
 					<Typography
 						variant="body2"

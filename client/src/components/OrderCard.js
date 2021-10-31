@@ -31,6 +31,12 @@ const OrderCard = ({ order, index }) => {
 					variant="body2"
 					className={classes.orderPrice}
 				>
+					Items: {order.orderItems.length}
+				</Typography>
+				<Typography
+					variant="body2"
+					className={classes.orderPrice}
+				>
 					Total Price: {`${order.totalPrice}€`}
 				</Typography>
 				<Typography variant="body2" color={'secondary'}>
