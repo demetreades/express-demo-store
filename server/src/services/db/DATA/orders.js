@@ -4,7 +4,7 @@ exports.orders = [
 		lastName: 'Dimitriadis',
 		address: 'plateia arxelaou 10',
 		city: 'thessaloniki',
-		postalCode: 58100,
+		postalCode: 54248,
 		user: '61752fbeee41080e7f4a60cd',
 		orderItems: [
 			{
@@ -21,7 +21,7 @@ exports.orders = [
 		lastName: 'Dimitriadis',
 		address: 'papadopoulou 24',
 		city: 'giannitsa',
-		postalCode: 58100,
+		postalCode: 54248,
 		user: '617863afbe170b6269cb86cf',
 		orderItems: [
 			{

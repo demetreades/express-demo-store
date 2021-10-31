@@ -10,6 +10,7 @@ exports.users = [
 	{
 		name: 'KokosSanel',
 		email: 'kokos@sanel.gr',
+		isAdmin: true,
 		password: bcrypt.hashSync('12345678', 10),
 	},
 	{
@@ -18,13 +19,13 @@ exports.users = [
 		password: bcrypt.hashSync('12345678', 10),
 	},
 	{
-		name: 'CocoLeva',
-		email: 'coco@leva.bg',
+		name: 'user2user',
+		email: 'user2@email.com',
 		password: bcrypt.hashSync('12345678', 10),
 	},
 	{
-		name: 'TsoniMnemonic',
-		email: 'tsoni@mnemonic.ru',
+		name: 'user3user',
+		email: 'user3@email.com',
 		password: bcrypt.hashSync('12345678', 10),
 	},
 ];
