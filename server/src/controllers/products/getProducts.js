@@ -3,17 +3,12 @@
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
 const { logger } = require('../../utils');
-const productService = require('../../services/crud');
-const { Product } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res) => {
-	const products = await productService.getAll(Product);
+	const { query: { page, limit } } = req;
+	const { paginationData: { data } } = res;
 
-	logger.info(`GET ALL PRODUCTS, COUNT: ${products.length}`);
+	logger.info(`GET ALL PRODUCTS, PAGES: ${page}, LIMIT: ${limit},  COUNT: ${data.length}`);
 
-	res.status(StatusCodes.OK).json({
-		success: true,
-		total: products.length,
-		data: products,
-	});
+	res.status(StatusCodes.OK).json(res.paginationData);
 });

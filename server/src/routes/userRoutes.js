@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { protect, admin } = require('../utils');
+const { protect, admin, paginatedData } = require('../utils');
 const {
 	authUser,
 	registerUser,
@@ -9,9 +9,11 @@ const {
 	updateUser,
 } = require('../controllers/users');
 
+const { User } = require('../services/models');
+
 router
 	.route('/')
-	.get(protect, admin, getUsers)
+	.get(paginatedData(User), protect, admin, getUsers)
 	.post(registerUser);
 
 router

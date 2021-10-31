@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { protect, admin } = require('../utils');
+const { protect, admin, paginatedData } = require('../utils');
 const { upload } = require('../config');
 const {
 	getProducts,
@@ -11,9 +11,11 @@ const {
 	imageUpload,
 } = require('../controllers/products');
 
+const { Product } = require('../services/models');
+
 router
 	.route('/')
-	.get(getProducts)
+	.get(paginatedData(Product), getProducts)
 	.post(protect, admin, createProduct);
 
 router

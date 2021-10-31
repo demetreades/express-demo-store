@@ -8,6 +8,7 @@ const normalizePort = require('./normalizePort');
 const generateToken = require('./auth/generateToken');
 const admin = require('./auth/admin');
 const protect = require('./auth/protect');
+const paginatedData = require('./paginatedData');
 
 module.exports = {
 	BaseError,
@@ -20,4 +21,5 @@ module.exports = {
 	generateToken,
 	admin,
 	protect,
+	paginatedData,
 };

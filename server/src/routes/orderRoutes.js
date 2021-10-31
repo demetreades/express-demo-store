@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { protect, admin } = require('../utils');
+const { protect, admin, paginatedData } = require('../utils');
 const {
 	getOrders,
 	getOrderById,
@@ -9,9 +9,11 @@ const {
 	getOrdersByUser
 } = require('../controllers/orders/index');
 
+const { Order } = require('../services/models');
+
 router
 	.route('/')
-	.get(protect, admin, getOrders)
+	.get(paginatedData(Order), protect, admin, getOrders)
 	.post(createOrder);
 
 router
