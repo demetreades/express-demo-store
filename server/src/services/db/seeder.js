@@ -14,7 +14,7 @@ const importData = async () => {
 		await User.deleteMany();
 		await Order.deleteMany();
 
-		const createdUsers = await User.insertMany(users);
+		const createdUsers = await User.create(users);
 
 		const adminUser = createdUsers[0]._id;
 
@@ -26,8 +26,8 @@ const importData = async () => {
 			return { ...order, user: adminUser };
 		});
 
-		await Product.insertMany(sampleProducts);
-		await Order.insertMany(sampleOrders);
+		await Product.create(sampleProducts);
+		await Order.create(sampleOrders);
 
 		logger.info('\n\nData imported\n');
 		process.exit();
