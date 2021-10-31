@@ -26,8 +26,8 @@ const importData = async () => {
 			return { ...order, user: adminUser };
 		});
 
-		await Product.insertMany(sampleProducts);
-		await Order.insertMany(sampleOrders);
+		await Product.create(sampleProducts);
+		await Order.create(sampleOrders);
 
 		logger.info('\n\nData imported\n');
 		process.exit();
