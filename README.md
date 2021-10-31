@@ -57,7 +57,7 @@ Run server and client separately.
 
 <br>
 
-API is documented with Postman, the collection is located under root folder: `postman-collection.json`
+API is documented with Postman, the collection is located under root folder as: `express-demo-store API.postman_collection.json`
 
 <br>
 

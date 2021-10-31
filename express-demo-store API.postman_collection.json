@@ -1,0 +1,3045 @@
+{
+	"info": {
+		"_postman_id": "f4f3304b-5a82-4d9c-a512-870646410d12",
+		"name": "express-demo-store API",
+		"description": "API running on localhost:5000\n\nThis collection contains sample requests for [express-demo-store](https://github.com/demetreades/express-demo-store)\n\nEnvironmental variables are included in the Collection folder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "get all products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/products?page=1&limit=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Gets all products"
+					},
+					"response": [
+						{
+							"name": "get all products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/products?page=1&limit=5",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:15:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693407"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"991-soWpx1+gFnCxZQCpEvjZ0+X32ok\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"total\": 5,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 2,\n            \"limit\": 5\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"617e793259d58f8309fdf948\",\n            \"user\": \"617e793259d58f8309fdf942\",\n            \"name\": \"Airpods Wireless Bluetooth Headphones\",\n            \"image\": \"/img/products/placeholder-image.png\",\n            \"brand\": \"Apple\",\n            \"description\": \"Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working\",\n            \"price\": 89.99,\n            \"inStock\": 3,\n            \"isActive\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T11:08:34.655Z\",\n            \"updatedAt\": \"2021-10-31T11:08:34.655Z\"\n        },\n        {\n            \"_id\": \"617e793259d58f8309fdf949\",\n            \"user\": \"617e793259d58f8309fdf942\",\n            \"name\": \"iPhone 11 Pro 256GB Memory\",\n            \"image\": \"/img/products/placeholder-image.png\",\n            \"brand\": \"Apple\",\n            \"description\": \"Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life\",\n            \"price\": 599.99,\n            \"inStock\": 10,\n            \"isActive\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T11:08:34.655Z\",\n            \"updatedAt\": \"2021-10-31T11:08:34.655Z\"\n        },\n        {\n            \"_id\": \"617e793259d58f8309fdf94a\",\n            \"user\": \"617e793259d58f8309fdf942\",\n            \"name\": \"Cannon EOS 80D DSLR Camera\",\n            \"image\": \"/img/products/placeholder-image.png\",\n            \"brand\": \"Cannon\",\n            \"description\": \"Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design\",\n            \"price\": 929.99,\n            \"inStock\": 22,\n            \"isActive\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T11:08:34.655Z\",\n            \"updatedAt\": \"2021-10-31T11:08:34.655Z\"\n        },\n        {\n            \"_id\": \"617e793259d58f8309fdf94b\",\n            \"user\": \"617e793259d58f8309fdf942\",\n            \"name\": \"Sony Playstation 4 Pro White Version\",\n            \"image\": \"/img/products/placeholder-image.png\",\n            \"brand\": \"Sony\",\n            \"description\": \"The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music\",\n            \"price\": 399.99,\n            \"inStock\": 10,\n            \"isActive\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T11:08:34.655Z\",\n            \"updatedAt\": \"2021-10-31T11:08:34.655Z\"\n        },\n        {\n            \"_id\": \"617e793259d58f8309fdf94c\",\n            \"user\": \"617e793259d58f8309fdf942\",\n            \"name\": \"Logitech G-Series Gaming Mouse\",\n            \"image\": \"/img/products/placeholder-image.png\",\n            \"brand\": \"Logitech\",\n            \"description\": \"Get a better handle on your games with this Logitech light sync gaming mouse. The six programmable buttons allow customization for a smooth playing experience\",\n            \"price\": 49.99,\n            \"inStock\": 7,\n            \"isActive\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T11:08:34.656Z\",\n            \"updatedAt\": \"2021-10-31T11:08:34.656Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/products/:product_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "617eb41b5308f5c3bca7fb44"
+								}
+							]
+						},
+						"description": "Gets a product by id"
+					},
+					"response": [
+						{
+							"name": "get product by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/products/:product_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "617e793259d58f8309fdf948"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "21"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:16:30 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693407"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "541"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21d-FrqCTi8REmp+1GA9De5GxUwVJf4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617e793259d58f8309fdf948\",\n        \"user\": \"617e793259d58f8309fdf942\",\n        \"name\": \"Airpods Wireless Bluetooth Headphones\",\n        \"image\": \"/img/products/placeholder-image.png\",\n        \"brand\": \"Apple\",\n        \"description\": \"Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working\",\n        \"price\": 89.99,\n        \"inStock\": 3,\n        \"isActive\": true,\n        \"__v\": 0,\n        \"createdAt\": \"2021-10-31T11:08:34.655Z\",\n        \"updatedAt\": \"2021-10-31T11:08:34.655Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get product by slug",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/products/slug/:slug",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								"slug",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "cannon-eos-80d-dslr-camera"
+								}
+							]
+						},
+						"description": "Gets a product from its slug property"
+					},
+					"response": [
+						{
+							"name": "get product by slug",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/products/slug/:slug",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"slug",
+										":slug"
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "cannon-eos-80d-dslr-camera"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:22:03 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693732"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "522"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20a-je1oeAdZsp0inZf88hg0FoxXB8s\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb41b5308f5c3bca7fb45\",\n        \"user\": \"617eb41b5308f5c3bca7fb39\",\n        \"name\": \"Cannon EOS 80D DSLR Camera\",\n        \"image\": \"/img/products/placeholder-image.png\",\n        \"brand\": \"Cannon\",\n        \"description\": \"Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design\",\n        \"price\": 929.99,\n        \"inStock\": 22,\n        \"isActive\": true,\n        \"createdAt\": \"2021-10-31T15:19:55.777Z\",\n        \"updatedAt\": \"2021-10-31T15:19:55.777Z\",\n        \"slug\": \"cannon-eos-80d-dslr-camera\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create new product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"name\": \"new postman's product\",\r\n    \"brand\": \"Postman\",\r\n    \"description\": \"some refined description\",\r\n    \"price\": 35.55,\r\n    \"inStock\": 11,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Creates a new product"
+					},
+					"response": [
+						{
+							"name": "create new product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"name\": \"new postman's product\",\r\n    \"brand\": \"Postman\",\r\n    \"description\": \"some refined description\",\r\n    \"price\": 35.55,\r\n    \"inStock\": 11,\r\n    \"isActive\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:17:12 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693467"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "388"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"184-FSBXJnrNlSOt2ZtTDf2HVnXkGpA\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": \"61752fbeee41080e7f4a60cd\",\n        \"name\": \"new postman's product\",\n        \"image\": \"/img/products/placeholder-image.png\",\n        \"brand\": \"Postman\",\n        \"description\": \"some refined description\",\n        \"price\": 35.55,\n        \"inStock\": 11,\n        \"isActive\": true,\n        \"_id\": \"617eb379605f7df03ec5f9b8\",\n        \"createdAt\": \"2021-10-31T15:17:13.007Z\",\n        \"updatedAt\": \"2021-10-31T15:17:13.007Z\",\n        \"slug\": \"new-postman's-product\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "product image upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/demet/Pictures/sample-image.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/products/upload/img/:product_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								"upload",
+								"img",
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "617eb41b5308f5c3bca7fb44"
+								}
+							]
+						},
+						"description": "Gets a product by id and uploads an image on this product"
+					},
+					"response": [
+						{
+							"name": "product image upload",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/demet/Pictures/sample-image.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products/upload/img/:product_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										"upload",
+										"img",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "617eb41b5308f5c3bca7fb44"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "21"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:21:52 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693732"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "403"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"193-HwCTkz3O6v0aquk19ZKfBqz0/ZE\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb41b5308f5c3bca7fb44\",\n        \"user\": \"61752fbeee41080e7f4a60cd\",\n        \"name\": \"iPhone 11 Pro 256GB Memory\",\n        \"image\": \"/img/products/1635693712664.png\",\n        \"brand\": \"Update\",\n        \"description\": \"some very very refined description\",\n        \"price\": 655.99,\n        \"inStock\": 4,\n        \"isActive\": true,\n        \"createdAt\": \"2021-10-31T15:19:55.777Z\",\n        \"updatedAt\": \"2021-10-31T15:21:52.669Z\",\n        \"slug\": \"iphone-11-pro-256gb-memory\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update product by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"brand\": \"Update\",\r\n    \"description\": \"some very very refined description\",\r\n    \"price\": 655.99,\r\n    \"inStock\": 4,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/products/:product_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "617eb41b5308f5c3bca7fb44"
+								}
+							]
+						},
+						"description": "Updates an existing product by its id"
+					},
+					"response": [
+						{
+							"name": "update product by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"brand\": \"Update\",\r\n    \"description\": \"some very very refined description\",\r\n    \"price\": 655.99,\r\n    \"inStock\": 4,\r\n    \"isActive\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/products/:product_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "617eb41b5308f5c3bca7fb44"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:21:34 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693732"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "407"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"197-KY+1GQVWvqnV7oMI084ZWcRBuWQ\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb41b5308f5c3bca7fb44\",\n        \"user\": \"61752fbeee41080e7f4a60cd\",\n        \"name\": \"iPhone 11 Pro 256GB Memory\",\n        \"image\": \"/img/products/placeholder-image.png\",\n        \"brand\": \"Update\",\n        \"description\": \"some very very refined description\",\n        \"price\": 655.99,\n        \"inStock\": 4,\n        \"isActive\": true,\n        \"createdAt\": \"2021-10-31T15:19:55.777Z\",\n        \"updatedAt\": \"2021-10-31T15:21:34.901Z\",\n        \"slug\": \"iphone-11-pro-256gb-memory\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete product by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/products/:product_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"products",
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": "617eb41b5308f5c3bca7fb44"
+								}
+							]
+						},
+						"description": "Deletes an existing product by its id"
+					},
+					"response": [
+						{
+							"name": "delete product by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/products/:product_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"products",
+										":product_id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "617eb41b5308f5c3bca7fb44"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:22:43 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693792"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "get all orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/orders?page=1&limit=1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Gets all orders"
+					},
+					"response": [
+						{
+							"name": "get all orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/orders?page=1&limit=1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:23:33 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693852"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "583"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"247-rZQARQE3gOIIYTXXMKMTMl0ubXM\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"total\": 1,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 2,\n            \"limit\": 1\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"617eb41b5308f5c3bca7fb4f\",\n            \"user\": \"617eb41b5308f5c3bca7fb39\",\n            \"firstName\": \"Panos\",\n            \"lastName\": \"Dimitriadis\",\n            \"orderItems\": [\n                {\n                    \"price\": 55.99,\n                    \"product\": \"6179066659a97328d4471d48\",\n                    \"_id\": \"617eb41b5308f5c3bca7fb50\"\n                }\n            ],\n            \"address\": \"plateia arxelaou 10\",\n            \"city\": \"thessaloniki\",\n            \"postalCode\": 54248,\n            \"totalPrice\": 55.99,\n            \"isPaid\": false,\n            \"isDelivered\": false,\n            \"createdAt\": \"2021-10-31T15:19:55.789Z\",\n            \"updatedAt\": \"2021-10-31T15:19:55.789Z\",\n            \"deliveredAt\": \"2021-10-31T15:19:55.789Z\",\n            \"paidAt\": \"2021-10-31T15:19:55.789Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get all orders by user id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/orders/user/:user_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"user",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "617eb41b5308f5c3bca7fb39"
+								}
+							]
+						},
+						"description": "Gets all orders from a user by its id"
+					},
+					"response": [
+						{
+							"name": "get all orders by user id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/orders/user/:user_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "617eb41b5308f5c3bca7fb39"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:24:58 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693912"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "620"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26c-z7T/JqeTbb1rzEOHgL+COJEFbPw\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"_id\": \"617eb41b5308f5c3bca7fb51\",\n            \"user\": \"617eb41b5308f5c3bca7fb39\",\n            \"firstName\": \"Panos\",\n            \"lastName\": \"Dimitriadis\",\n            \"orderItems\": [\n                {\n                    \"price\": 155.99,\n                    \"product\": \"6179066659a97328d4471d48\",\n                    \"_id\": \"617eb41b5308f5c3bca7fb52\"\n                },\n                {\n                    \"price\": 9.99,\n                    \"product\": \"6179066659a97328d4471d47\",\n                    \"_id\": \"617eb41b5308f5c3bca7fb53\"\n                }\n            ],\n            \"address\": \"papadopoulou 24\",\n            \"city\": \"giannitsa\",\n            \"postalCode\": 54248,\n            \"totalPrice\": 221.97,\n            \"isPaid\": false,\n            \"isDelivered\": false,\n            \"createdAt\": \"2021-10-31T15:19:55.789Z\",\n            \"updatedAt\": \"2021-10-31T15:19:55.789Z\",\n            \"deliveredAt\": \"2021-10-31T15:19:55.789Z\",\n            \"paidAt\": \"2021-10-31T15:19:55.789Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Order by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/orders/:order_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": "617eb41b5308f5c3bca7fb4f"
+								}
+							]
+						},
+						"description": "Gets an order by its id"
+					},
+					"response": [
+						{
+							"name": "Get Order by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/orders/:order_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders",
+										":order_id"
+									],
+									"variable": [
+										{
+											"key": "order_id",
+											"value": "617eb41b5308f5c3bca7fb4f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:23:47 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693852"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "528"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"210-XmrLRQE9i6TyJF3SW2sMnksGNjM\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb41b5308f5c3bca7fb4f\",\n        \"user\": \"617eb41b5308f5c3bca7fb39\",\n        \"firstName\": \"Panos\",\n        \"lastName\": \"Dimitriadis\",\n        \"orderItems\": [\n            {\n                \"price\": 55.99,\n                \"product\": \"6179066659a97328d4471d48\",\n                \"_id\": \"617eb41b5308f5c3bca7fb50\"\n            }\n        ],\n        \"address\": \"plateia arxelaou 10\",\n        \"city\": \"thessaloniki\",\n        \"postalCode\": 54248,\n        \"totalPrice\": 55.99,\n        \"isPaid\": false,\n        \"isDelivered\": false,\n        \"createdAt\": \"2021-10-31T15:19:55.789Z\",\n        \"updatedAt\": \"2021-10-31T15:19:55.789Z\",\n        \"deliveredAt\": \"2021-10-31T15:19:55.789Z\",\n        \"paidAt\": \"2021-10-31T15:19:55.789Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create new order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"firstName\": \"Nikolas\",\r\n    \"lastName\": \"Xristou\",\r\n    \"address\": \"Karasoutsa 29\",\r\n    \"orderItems\": [\r\n        {\r\n            \"product\": \"617d3758415a1d8b00b57359\",\r\n            \"price\": 333.55\r\n        }\r\n    ],\r\n    \"city\": \"Athens\",\r\n    \"postalCode\": 4440,\r\n    \"totalPrice\": 335.55,\r\n    \"isPaid\": true,\r\n    \"isDelivered\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/orders",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Creates new order"
+					},
+					"response": [
+						{
+							"name": "create new order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": \"61752fbeee41080e7f4a60cd\",\r\n    \"firstName\": \"Nikolas\",\r\n    \"lastName\": \"Xristou\",\r\n    \"address\": \"Karasoutsa 29\",\r\n    \"orderItems\": [\r\n        {\r\n            \"product\": \"617d3758415a1d8b00b57359\",\r\n            \"price\": 333.55\r\n        }\r\n    ],\r\n    \"city\": \"Athens\",\r\n    \"postalCode\": 4440,\r\n    \"totalPrice\": 335.55,\r\n    \"isPaid\": true,\r\n    \"isDelivered\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/orders",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:24:07 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693852"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "514"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"202-puPxr+vat1HbRElrKgYJmBw7RBw\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": \"61752fbeee41080e7f4a60cd\",\n        \"firstName\": \"Nikolas\",\n        \"lastName\": \"Xristou\",\n        \"orderItems\": [\n            {\n                \"price\": 333.55,\n                \"product\": \"617d3758415a1d8b00b57359\",\n                \"_id\": \"617eb517677badff1a45190d\"\n            }\n        ],\n        \"address\": \"Karasoutsa 29\",\n        \"city\": \"Athens\",\n        \"postalCode\": 4440,\n        \"totalPrice\": 335.55,\n        \"isPaid\": true,\n        \"isDelivered\": false,\n        \"_id\": \"617eb517677badff1a45190c\",\n        \"createdAt\": \"2021-10-31T15:24:07.267Z\",\n        \"updatedAt\": \"2021-10-31T15:24:07.267Z\",\n        \"deliveredAt\": \"2021-10-31T15:24:07.267Z\",\n        \"paidAt\": \"2021-10-31T15:24:07.267Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update order by id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isPaid\": true,\r\n    \"paidAt\": \"2021-11-13T22:11:00.000Z\",\r\n    \"isDelivered\": true,\r\n    \"deliveredAt\": \"2021-12-13T17:45:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/orders/:order_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": "617eb41b5308f5c3bca7fb4f"
+								}
+							]
+						},
+						"description": "Updates an existing order by its id"
+					},
+					"response": [
+						{
+							"name": "update order by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isPaid\": true,\r\n    \"paidAt\": \"2021-11-13T22:11:00.000Z\",\r\n    \"isDelivered\": true,\r\n    \"deliveredAt\": \"2021-12-13T17:45:00.000Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/orders/:order_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders",
+										":order_id"
+									],
+									"variable": [
+										{
+											"key": "order_id",
+											"value": "617eb41b5308f5c3bca7fb4f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "24"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:24:27 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693912"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "526"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20e-t3vveZYpOuSeb2A7zKRDwuqqjs0\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb41b5308f5c3bca7fb4f\",\n        \"user\": \"617eb41b5308f5c3bca7fb39\",\n        \"firstName\": \"Panos\",\n        \"lastName\": \"Dimitriadis\",\n        \"orderItems\": [\n            {\n                \"price\": 55.99,\n                \"product\": \"6179066659a97328d4471d48\",\n                \"_id\": \"617eb41b5308f5c3bca7fb50\"\n            }\n        ],\n        \"address\": \"plateia arxelaou 10\",\n        \"city\": \"thessaloniki\",\n        \"postalCode\": 54248,\n        \"totalPrice\": 55.99,\n        \"isPaid\": true,\n        \"isDelivered\": true,\n        \"createdAt\": \"2021-10-31T15:19:55.789Z\",\n        \"updatedAt\": \"2021-10-31T15:24:27.762Z\",\n        \"deliveredAt\": \"2021-12-13T17:45:00.000Z\",\n        \"paidAt\": \"2021-11-13T22:11:00.000Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete order by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/orders/:order_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": "617eb41b5308f5c3bca7fb4f"
+								}
+							]
+						},
+						"description": "Deletes an existing order by its id"
+					},
+					"response": [
+						{
+							"name": "delete order by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/orders/:order_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"orders",
+										":order_id"
+									],
+									"variable": [
+										{
+											"key": "order_id",
+											"value": "617eb41b5308f5c3bca7fb4f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:24:38 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635693912"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "AUTH login user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@user.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						},
+						"description": "Authenticates a user by its email and password"
+					},
+					"response": [
+						{
+							"name": "AUTH login user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin@user.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/users/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:29:15 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694197"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12b-IsR4AxnACk/1lKvrykcDsuwdQ10\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb5ec5026553648a600d7\",\n        \"name\": \"adminuser\",\n        \"email\": \"admin@user.com\",\n        \"isAdmin\": true,\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2ViNWVjNTAyNjU1MzY0OGE2MDBkNyIsImlhdCI6MTYzNTY5NDE1NSwiZXhwIjoxNjM2OTkwMTU1fQ.syhTeMS6MEHCcN31a9GrifUPlfForXTth3DeIrBb_Zs\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "register new user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"newuser2\",\n    \"email\": \"new@user2.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Creates a new user"
+					},
+					"response": [
+						{
+							"name": "register new user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"newuser2\",\n    \"email\": \"new@user2.com\",\n    \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/users",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:29:26 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694197"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12a-wxWg2kCWMrYfpioB7K/HEdgn6wg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb6561d8d8f0d7668cc22\",\n        \"name\": \"newuser2\",\n        \"email\": \"new@user2.com\",\n        \"isAdmin\": false,\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2ViNjU2MWQ4ZDhmMGQ3NjY4Y2MyMiIsImlhdCI6MTYzNTY5NDE2NiwiZXhwIjoxNjM2OTkwMTY2fQ.0nYRHQjFQdRp10tSUH8HLSsawXVvBw4mXtJj7krwM8U\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users?page=1&limit=2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Gets all registered users"
+					},
+					"response": [
+						{
+							"name": "get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/users?page=1&limit=2",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "21"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:29:34 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694197"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "587"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24b-UT7EO2VCRXHN0pTN81oI3GBdhRk\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"total\": 2,\n    \"pagination\": {\n        \"next\": {\n            \"page\": 2,\n            \"limit\": 2\n        }\n    },\n    \"data\": [\n        {\n            \"_id\": \"617eb5ec5026553648a600d7\",\n            \"name\": \"adminuser\",\n            \"email\": \"admin@user.com\",\n            \"password\": \"$2a$10$0n4.XeHKe/pAAFZIkX1WoeL2XVhth1IzM0aMwsnEeFkSqzTTlTCzO\",\n            \"isAdmin\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T15:27:40.987Z\",\n            \"updatedAt\": \"2021-10-31T15:27:40.987Z\"\n        },\n        {\n            \"_id\": \"617eb5ec5026553648a600d8\",\n            \"name\": \"kokossanel\",\n            \"email\": \"kokos@sanel.gr\",\n            \"password\": \"$2a$10$dZC1NaJRbZc1yUWixyPwTeH5JzwY3umXVLw5EodD7jV2czCKrolXK\",\n            \"isAdmin\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2021-10-31T15:27:40.987Z\",\n            \"updatedAt\": \"2021-10-31T15:27:40.987Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get user by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users/:user_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "617eb5ec5026553648a600d7"
+								}
+							]
+						},
+						"description": "Gets an existing user by its id"
+					},
+					"response": [
+						{
+							"name": "get user by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/users/:user_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "617eb5ec5026553648a600d7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "20"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:29:50 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694197"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-HOut+SoeMZuP7zBCQYXxlGPSCrs\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb5ec5026553648a600d7\",\n        \"name\": \"adminuser\",\n        \"email\": \"admin@user.com\",\n        \"password\": \"$2a$10$0n4.XeHKe/pAAFZIkX1WoeL2XVhth1IzM0aMwsnEeFkSqzTTlTCzO\",\n        \"isAdmin\": true,\n        \"__v\": 0,\n        \"createdAt\": \"2021-10-31T15:27:40.987Z\",\n        \"updatedAt\": \"2021-10-31T15:27:40.987Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update user by id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAdmin\": false,\r\n    \"name\": \"adminOtherName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/:user_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "617eb6fe13eea363ae3565b9"
+								}
+							]
+						},
+						"description": "Updates an existing user"
+					},
+					"response": [
+						{
+							"name": "update user by id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isAdmin\": false,\r\n    \"name\": \"adminOtherName\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/users/:user_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "617eb6fe13eea363ae3565b9"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:32:33 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694397"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-7PQZkcaKQ/rucS340COQWbMJBbI\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"_id\": \"617eb6fe13eea363ae3565b9\",\n        \"name\": \"adminothername\",\n        \"email\": \"admin@user.com\",\n        \"isAdmin\": false,\n        \"password\": \"$2a$10$8Ii2M3rUjXYjx5HaIMEoae8F8aiu.xhbuK6TDd0vcyf7/dkt7pgsm\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete user by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users/:user_id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "617eb739bac7c51e3f1b3d65"
+								}
+							]
+						},
+						"description": "Deletes an existing user by its id"
+					},
+					"response": [
+						{
+							"name": "delete user by id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/users/:user_id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "617eb739bac7c51e3f1b3d65"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "25"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "23"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 31 Oct 2021 15:33:29 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1635694456"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a-pIPrt4esgEyEkX/w62Rnrj9XXdg\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		},
+		{
+			"key": "TOKEN",
+			"value": ""
+		}
+	]
+}
