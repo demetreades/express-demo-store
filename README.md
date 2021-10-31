@@ -2,10 +2,14 @@
 
 <br>
 
-Express restful API with mongoose, react, basic authentication via JWT local storage and Postman collection.
+Express restful API with basic authentication via JWT local storage, mongoose and react.
 
 - server: http://localhost:5000/
 - client: http://localhost:3000/
+
+<br>
+
+![sample-app-image](./client/public/img/sample-DEMOSTORE-screenshot.png)
 
 <br>
 
@@ -13,15 +17,19 @@ Express restful API with mongoose, react, basic authentication via JWT local sto
 
 1.  Run `npm i` to install dependencies on server and client or run `npm run fresh`
 
-1.  To seed database with users, products and orders: `npm run DATA:import`
+1.  Seed database with Users, Products and Orders: `npm run DATA:import`
 
-1.  Create config `.env` file under root folder
+1.  Create config `.env` file under root folder as described in the example.
+
+<br>
 
 ##### .env example
 
     NODE_ENV=development
 
-    PORT=5000 HOST=localhost PROTOCOL=http
+    PORT=5000
+    HOST=localhost
+    PROTOCOL=http
 
     MONGO_URI=mongodb://localhost:27017
 
@@ -29,22 +37,27 @@ Express restful API with mongoose, react, basic authentication via JWT local sto
 
     JWT_SECRET=289f52c34d7af6a4aadadeb58641b60c9246077c6aa0ff1d
 
+<br>
+
 ### Start
 
-Run server and client separately
+Run server and client separately.
 
     npm run server
+
     npm run client
 
-##### Login credenticals
+##### Sample users
 
-admin
+    admin@user.com [Admin]
+    12345678
 
-    email: admin@user.com , password: 12345678
+    user1@email.com [Customer]
+    12345678
 
-user
+<br>
 
-     email: user1@email.com , password: 12345678
+API is documented with Postman, the collection is located under root folder: `postman-collection.json`
 
 <br>
 
