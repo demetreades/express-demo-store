@@ -22,7 +22,7 @@ module.exports = asyncHandler(async (req, res, next) => {
 			name: user.name,
 			email: user.email,
 			isAdmin: user.isAdmin,
-			password: bcrypt.hashSync(user.password, 10), // to-fix: den doulevei to hash tou pass meta to update, den kanei match
+			password: bcrypt.hashSync(user.password, 10),
 		},
 	});
 });

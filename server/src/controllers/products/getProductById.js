@@ -2,7 +2,7 @@
 
 const { StatusCodes } = require('http-status-codes');
 const asyncHandler = require('express-async-handler');
-const { BaseError, logger } = require('../../utils');
+const { logger } = require('../../utils');
 const productService = require('../../services/crud');
 const { Product } = require('../../services/models');
 
