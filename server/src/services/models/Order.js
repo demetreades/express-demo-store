@@ -66,20 +66,4 @@ const orderSchema = mongoose.Schema(
 	}
 );
 
-orderSchema.pre('save', function (next) {
-	if (!this.isModified('isDelivered')) {
-		next();
-	}
-	this.deliveredAt = new Date();
-	next();
-});
-
-orderSchema.pre('save', function (next) {
-	if (!this.isModified('isPaid')) {
-		next();
-	}
-	this.paidAt = new Date();
-	next();
-});
-
 module.exports = mongoose.model('Order', orderSchema);
