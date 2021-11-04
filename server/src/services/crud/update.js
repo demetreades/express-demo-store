@@ -4,14 +4,14 @@ const { StatusCodes } = require('http-status-codes');
 const { BaseError } = require('../../utils');
 
 module.exports = async (Model, id, body) => {
-  const results = await Model.findByIdAndUpdate(id, body, {
-    new: true,
-    runValidators: true,
-  });
+	const results = await Model.findById(id);
 
-  if (!results) {
-    throw new BaseError('Not found', StatusCodes.NOT_FOUND);
-  }
+	if (!results) {
+		throw new BaseError('Not found', StatusCodes.NOT_FOUND);
+	}
 
-  return results;
+	Object.assign(results, body);
+	await results.save();
+
+	return results;
 };
