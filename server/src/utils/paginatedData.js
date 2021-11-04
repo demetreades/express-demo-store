@@ -4,8 +4,10 @@ const asyncHandler = require('express-async-handler');
 
 module.exports = (Model) => {
 	return asyncHandler(async (req, res, next) => {
-		const page = parseInt(req.query.page, 10) || 1;
-		const limit = parseInt(req.query.limit, 10) || 25;
+		const { query } = req;
+
+		const page = parseInt(query.page, 10) || 1;
+		const limit = parseInt(query.limit, 10) || 25;
 
 		const startIndex = (page - 1) * limit;
 		const endIndex = page * limit;
@@ -28,7 +30,7 @@ module.exports = (Model) => {
 			};
 		}
 
-		const results = await Model.find({}).limit(limit).skip(startIndex);
+		const results = await Model.find().limit(limit).skip(startIndex);
 
 		res.paginationData = {
 			success: true,
