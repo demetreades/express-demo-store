@@ -13,7 +13,7 @@ module.exports = asyncHandler(async (req, res, next) => {
 
 	logger.info(`PRODUCT: name: ${product.name}, id: ${product._id} DELETED`);
 
-	res.status(StatusCodes.OK).json({
+	res.status(StatusCodes.NO_CONTENT).json({
 		success: true,
 		data: {},
 	});

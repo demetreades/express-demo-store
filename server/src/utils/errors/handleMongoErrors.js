@@ -14,14 +14,14 @@ module.exports = (err, req, res, next) => {
 		return next(
 			new BaseError(
 				`Duplicate field value entered: ${Object.keys(keyValue)}`,
-				StatusCodes.BAD_REQUEST
+				StatusCodes.UNPROCESSABLE_ENTITY
 			)
 		);
 	}
 
 	if (name === 'ValidationError') {
 		const message = Object.values(errors).map((val) => val.message);
-		return next(new BaseError(message, StatusCodes.BAD_REQUEST));
+		return next(new BaseError(message, StatusCodes.UNPROCESSABLE_ENTITY));
 	}
 
 	next(err);

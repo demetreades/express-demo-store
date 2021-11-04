@@ -7,13 +7,13 @@ const orderService = require('../../services/crud');
 const { Order } = require('../../services/models');
 
 module.exports = asyncHandler(async (req, res, next) => {
-	const { params : { id } } = req;
+	const { params: { id } } = req;
 
 	const order = await orderService.remove(Order, id);
 
 	logger.info(`ORDER id: ${order._id} DELETED`);
 
-	res.status(StatusCodes.OK).json({
+	res.status(StatusCodes.NO_CONTENT).json({
 		success: true,
 		data: {},
 	});

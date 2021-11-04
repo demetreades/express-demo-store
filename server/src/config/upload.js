@@ -23,7 +23,7 @@ const checkFileType = (file, cb) => {
 	if (extname && mimetype) {
 		return cb(null, true);
 	} else {
-		cb(new BaseError('Only image files accepted: jpg, jpeg, png', StatusCodes.FORBIDDEN));
+		cb(new BaseError('Only image files accepted: jpg, jpeg, png', StatusCodes.UNSUPPORTED_MEDIA_TYPE));
 	}
 };
 
