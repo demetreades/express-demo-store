@@ -41,9 +41,9 @@ const ProductCard = ({ product }) => {
 			/>
 			<CardHeader
 				className={classes.cardTitle}
-				onClick={handleAddToCart}
 				action={
 					<IconButton
+						onClick={handleAddToCart}
 						disabled={product.inStock === 0 ? true : false}
 					>
 						<AddIcon
