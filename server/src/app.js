@@ -8,7 +8,7 @@ const xss = require('xss-clean');
 const compression = require('compression');
 
 const { limitOptions, corsOptions } = require('./config');
-const { handleErrors, handleMongoErrors, handleMulterErrors, handleNotFound } = require('./utils');
+const { handleErrors, handleMongoErrors, handleNotFound } = require('./utils');
 const { userRoutes, orderRoutes, productRoutes } = require('./routes');
 const dbConnection = require('./services/db/connection');
 
