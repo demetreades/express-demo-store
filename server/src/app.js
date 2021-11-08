@@ -34,7 +34,7 @@ app.use(rateLimit(limitOptions));
 // }));
 
 if (isProduction) {
-	app.user(cors({ origin: 'https://express-demo-store.herokuapp.com/', credentials: true }));
+	app.use(cors({ origin: 'https://express-demo-store.herokuapp.com/', credentials: true }));
 }
 
 app.use(xss());
