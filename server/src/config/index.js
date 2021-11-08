@@ -1,4 +1,4 @@
-const { corsOptions } = require('./cors/corsOptions');
+const corsOptions = require('./corsOptions');
 const { limitOptions } = require('./limitOptions');
 const upload = require('./upload');
 
