@@ -22,8 +22,8 @@ app.use(helmet({
 }));
 
 app.use(rateLimit(limitOptions));
-// app.use(cors(corsOptions));
-app.use(cors({ origin: '*' }));
+app.use(cors(corsOptions));
+// app.use(cors({ origin: '*' }));
 app.use(xss());
 app.use(compression());
 

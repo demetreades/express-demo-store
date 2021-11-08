@@ -6,7 +6,7 @@ const { BaseError } = require('../utils');
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, process.env.NODE_ENV === 'developement' ? 'client/public/img/products' : 'client/build/public/img/products');
+		cb(null, process.env.NODE_ENV === 'developement' ? 'client/public/img/products' : 'client/build/img/products');
 	},
 	filename: (req, file, cb) => {
 		const fileName = Date.now() + path.extname(file.originalname);
