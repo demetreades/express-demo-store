@@ -17,7 +17,10 @@ const productSchema = mongoose.Schema(
 			minlength: [1, 'Name must be at least 1 character'],
 			maxlength: [64, 'Name must be shorter than 64 characters'],
 		},
-		slug: String,
+		slug: {
+			type: String,
+			unique: true,
+		},
 		image: {
 			type: String,
 			default: '/img/products/placeholder-image.png',
