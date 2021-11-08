@@ -26,9 +26,9 @@ app.use(rateLimit(limitOptions));
 
 app.use(cors({
 	origin: '*',
-	methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
-	preflightContinue: false,
-	optionsSuccessStatus: 204
+	// methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
+	// preflightContinue: false,
+	// optionsSuccessStatus: 204
 }));
 
 app.use(xss());
