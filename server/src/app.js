@@ -33,9 +33,11 @@ app.use(rateLimit(limitOptions));
 // 	optionsSuccessStatus: 204
 // }));
 
-if (isProduction) {
-	app.use(cors({ origin: 'https://express-demo-store.herokuapp.com/', credentials: true }));
-}
+app.use(cors({
+	origin: 'https://express-demo-store.herokuapp.com/',
+	preflightContinue: true,
+	credentials: true,
+}));
 
 app.use(xss());
 app.use(compression());
