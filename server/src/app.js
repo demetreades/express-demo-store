@@ -13,8 +13,6 @@ const { handleErrors, handleMongoErrors, handleNotFound } = require('./utils');
 const { userRoutes, orderRoutes, productRoutes } = require('./routes');
 const dbConnection = require('./services/db/connection');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 dbConnection();
 
 const app = express();
@@ -24,23 +22,7 @@ app.use(helmet({
 }));
 
 app.use(rateLimit(limitOptions));
-// app.use(cors(corsOptions));
-
-// app.use(cors({
-// 	origin: '*',
-// 	methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
-// 	preflightContinue: false,
-// 	optionsSuccessStatus: 204
-// }));
-
-// app.use(cors({
-// 	origin: 'https://express-demo-store.herokuapp.com/',
-// 	preflightContinue: true,
-// 	credentials: true,
-// }));
-
-// app.options('*', cors(corsOptions));
-
+app.use(cors(corsOptions));
 app.use(xss());
 app.use(compression());
 
