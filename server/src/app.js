@@ -22,8 +22,17 @@ app.use(helmet({
 }));
 
 app.use(rateLimit(limitOptions));
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // app.use(cors({ origin: '*' }));
+
+app.use(cors({
+	origin: process.env.NODE_ENV === 'production' ? 'https://express-demo-store.herokuapp.com' : 'http://localhost:3000',
+	methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
+	credentials: true,
+	preflightContinue: false,
+	optionsSuccessStatus: 200
+}));
+
 app.use(xss());
 app.use(compression());
 
