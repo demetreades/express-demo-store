@@ -22,17 +22,7 @@ app.use(helmet({
 }));
 
 app.use(rateLimit(limitOptions));
-// app.use(cors(corsOptions));
-// app.use(cors({ origin: '*' }));
-
-app.use(cors({
-	origin: process.env.NODE_ENV === 'production' ? 'https://express-demo-store.herokuapp.com' : 'http://localhost:3000',
-	methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-	credentials: true,
-	preflightContinue: false,
-	optionsSuccessStatus: 200
-}));
-
+app.use(cors(corsOptions));
 app.use(xss());
 app.use(compression());
 
@@ -43,12 +33,10 @@ app.use('/users', userRoutes);
 app.use('/orders', orderRoutes);
 app.use('/products', productRoutes);
 
-const dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
-	app.use('/uploads', express.static(path.join(dirname, '/uploads')));
-	app.use(express.static(path.join(dirname, '/client/build')));
+	app.use(express.static(path.resolve(process.cwd(), 'client/build')));
 	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(dirname, '/client/build/index.html'));
+		res.sendFile(path.resolve(process.cwd(), 'client/build/index.html'));
 	});
 } else {
 	app.get('/', (req, res) => {
