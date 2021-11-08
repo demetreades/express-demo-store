@@ -17,7 +17,10 @@ dbConnection();
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+	contentSecurityPolicy: false,
+}));
+
 app.use(rateLimit(limitOptions));
 app.use(cors(corsOptions));
 app.use(xss());
