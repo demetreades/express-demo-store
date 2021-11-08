@@ -39,7 +39,7 @@ app.use(rateLimit(limitOptions));
 // 	credentials: true,
 // }));
 
-app.options('*', cors(corsOptions));
+// app.options('*', cors(corsOptions));
 
 app.use(xss());
 app.use(compression());
