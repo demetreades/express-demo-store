@@ -23,7 +23,14 @@ app.use(helmet({
 
 app.use(rateLimit(limitOptions));
 // app.use(cors(corsOptions));
-app.use(cors());
+
+app.use(cors({
+	origin: '*',
+	methods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE'],
+	preflightContinue: false,
+	optionsSuccessStatus: 204
+}));
+
 app.use(xss());
 app.use(compression());
 
