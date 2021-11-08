@@ -22,7 +22,8 @@ app.use(helmet({
 }));
 
 app.use(rateLimit(limitOptions));
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(xss());
 app.use(compression());
 
