@@ -6,6 +6,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import ProductCard from '../components/ProductCard';
+import API_ENDPOINT from '../utils/config';
 
 import useStyles from '../styles';
 
@@ -21,7 +22,7 @@ const HomePage = () => {
 			try {
 				const {
 					data: { data: results },
-				} = await axios.get('http://localhost:5000/products');
+				} = await axios.get(`${API_ENDPOINT}/products`);
 				console.log(results, 'HOMEPAGE PRODUCTS');
 				setProducts(results);
 				setLoading(true);

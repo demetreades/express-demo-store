@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 
 import { UserContext } from '../context/UserContext';
 import { CartContext } from '../context/CartContext';
+import API_ENDPOINT from '../utils/config';
+
 import useStyles from '../styles';
 
 const Order = () => {
@@ -58,7 +60,7 @@ const Order = () => {
 		if (firstName && lastName && address && city && postalCode && !(totalPrice === 0)) {
 			try {
 				axios
-					.post('http://localhost:5000/orders', {
+					.post(`${API_ENDPOINT}/orders`, {
 						user: user._id,
 						firstName,
 						lastName,

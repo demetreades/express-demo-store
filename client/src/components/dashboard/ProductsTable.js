@@ -5,6 +5,7 @@ import MaterialTable from 'material-table';
 import { Button } from '@material-ui/core';
 
 import { UserContext } from '../../context/UserContext';
+import API_ENDPOINT from '../../utils/config';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -29,7 +30,7 @@ const Table = ({ title }) => {
 			redirect: 'follow'
 		};
 
-		fetch(`http://localhost:5000/products/upload/img/${rowData._id}`, requestOptions)
+		fetch(`${API_ENDPOINT}/products/upload/img/${rowData._id}`, requestOptions)
 			.then(response => response.text())
 			.then(result => console.log(result, 'image upload results'))
 			.catch(err => console.log('PRODUCT-TABLE UPLOAD ERROR: ', err));
@@ -39,7 +40,7 @@ const Table = ({ title }) => {
 		try {
 			const {
 				data: { data: results },
-			} = await axios.get('http://localhost:5000/products');
+			} = await axios.get('/products');
 			console.log(results, 'PRODUCTS TABLE');
 			setData(results);
 			setLoading(false);
@@ -137,7 +138,7 @@ const Table = ({ title }) => {
 					// ADD PRODUCT
 					onRowAdd: (newData) =>
 						new Promise((resolve, reject) => {
-							fetch(`http://localhost:5000/products`, {
+							fetch(`${API_ENDPOINT}/products`, {
 								method: 'POST',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),
@@ -154,7 +155,7 @@ const Table = ({ title }) => {
 								oldData,
 								`:: product: ${oldData.name} deleted from table`
 							);
-							fetch(`http://localhost:5000/products/${oldData._id}`, {
+							fetch(`${API_ENDPOINT}/products/${oldData._id}`, {
 								method: 'DELETE',
 								headers,
 								body: JSON.stringify({ user: user._id, ...oldData }),
@@ -171,7 +172,7 @@ const Table = ({ title }) => {
 								newData,
 								`:: updated product: ${newData.name} from table`
 							);
-							fetch(`http://localhost:5000/products/${oldData._id}`, {
+							fetch(`${API_ENDPOINT}/products/${oldData._id}`, {
 								method: 'PUT',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),

@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import MaterialTable from 'material-table';
 
 import { UserContext } from '../../context/UserContext';
+import API_ENDPOINT from '../../utils/config';
 
 const Table = ({ title }) => {
 	const { user } = useContext(UserContext);
@@ -25,7 +26,7 @@ const Table = ({ title }) => {
 		try {
 			const {
 				data: { data: results },
-			} = await axios.get('http://localhost:5000/users', { headers: { Authorization: `Bearer ${user.token}` } });
+			} = await axios.get(`${API_ENDPOINT}/users`, { headers: { Authorization: `Bearer ${user.token}` } });
 			console.log(results, 'USERS TABLE');
 			setData(results);
 			setLoading(false);
@@ -67,7 +68,7 @@ const Table = ({ title }) => {
 								oldData,
 								`:: user: ${oldData.name} deleted from table`
 							);
-							fetch(`http://localhost:5000/users/${oldData._id}`, {
+							fetch(`${API_ENDPOINT}/users/${oldData._id}`, {
 								method: 'DELETE',
 								headers,
 								body: JSON.stringify({ user: user._id, ...oldData }),
@@ -84,7 +85,7 @@ const Table = ({ title }) => {
 								newData,
 								`:: updated product: ${newData.name} from table`
 							);
-							fetch(`http://localhost:5000/users/${oldData._id}`, {
+							fetch(`${API_ENDPOINT}/users/${oldData._id}`, {
 								method: 'PUT',
 								headers,
 								body: JSON.stringify({ user: user._id, ...newData }),

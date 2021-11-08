@@ -8,6 +8,8 @@ import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';
 
+import API_ENDPOINT from '../utils/config';
+
 import useStyles from '../styles';
 
 const Register = () => {
@@ -47,7 +49,7 @@ const Register = () => {
 		if (username && email && password && (password === passwordVerify)) {
 			try {
 				axios
-					.post('http://localhost:5000/users', {
+					.post(`${API_ENDPOINT}/users`, {
 						name: username,
 						email,
 						password,

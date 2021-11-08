@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 import { UserContext } from '../context/UserContext';
 import OrderCard from '../components/OrderCard';
+import API_ENDPOINT from '../utils/config';
 
 import useStyles from '../styles';
 
@@ -26,7 +27,7 @@ const Profile = () => {
 			try {
 				const {
 					data: { data: results },
-				} = await axios.get(`http://localhost:5000/orders/user/${user._id}`, { headers: { Authorization: `Bearer ${user.token}` } });
+				} = await axios.get(`${API_ENDPOINT}/orders/user/${user._id}`, { headers: { Authorization: `Bearer ${user.token}` } });
 				console.log(results, 'Profile results');
 				setOrders(results);
 				setLoading(true);

@@ -9,6 +9,8 @@ import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';
 
 import { UserContext } from '../context/UserContext';
+import API_ENDPOINT from '../utils/config';
+
 import useStyles from '../styles';
 
 const Login = () => {
@@ -38,7 +40,7 @@ const Login = () => {
 		if (email && password) {
 			try {
 				axios
-					.post('http://localhost:5000/users/login', {
+					.post(`${API_ENDPOINT}/users/login`, {
 						email,
 						password,
 					})
